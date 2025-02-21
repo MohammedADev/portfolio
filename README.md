@@ -102,6 +102,12 @@ Mohammed Abdelaziz - work@mohammedabdelaziz.com
 
 Project Link: https://github.com/MohammedADev/portfolio
 
+## License
+
+This project is licensed under the MIT License with Attribution Requirement - see the [LICENSE.md](LICENSE.md) file for details.
+
+**Attribution Requirement:** If you use or modify this portfolio template, you must include a visible attribution link to [Mohammed Abdelaziz](https://github.com/MohammedADev/) in your website's footer or about section.
+
 ## Acknowledgements
 
 - [Next.js](https://nextjs.org/)
