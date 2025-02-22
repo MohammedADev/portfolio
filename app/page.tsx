@@ -10,12 +10,12 @@ export default function Home() {
             href="https://github.com/MohammedADev"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative mb-6 bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-4xl font-bold text-transparent md:text-6xl"
+            className="group relative inline-block bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-4xl font-bold text-transparent md:text-6xl"
           >
             Mohammed Abdelaziz
             <span className="absolute bottom-0 left-0 h-1 w-full scale-0 bg-gradient-to-r from-cyan-300 to-purple-300 transition-all duration-500 ease-in-out group-hover:scale-100"></span>
           </Link>
-          <p className="mb-8 text-xl text-white/80 md:text-2xl">
+          <p className="mb-12 text-xl text-white/80 md:text-2xl">
             A Developer with many hobbies and interests
           </p>
           <div className="flex justify-center gap-4">
