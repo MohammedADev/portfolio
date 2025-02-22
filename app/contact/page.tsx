@@ -10,7 +10,7 @@ export default function Contact() {
       <div className="min-h-screen p-8 md:p-16">
         <div className="mx-auto grid max-w-6xl animate-slide-up gap-12 md:grid-cols-2">
           <div className="space-y-8">
-            <h1 className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-4xl font-bold text-transparent">
+            <h1 className="bg-linear-to-r from-primary to-secondary bg-clip-text text-4xl font-bold text-transparent">
               Contact
             </h1>
 

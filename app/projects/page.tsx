@@ -52,7 +52,7 @@ export default function Projects() {
     <Layout currentSection="projects">
       <div className="min-h-screen p-8 md:p-16">
         <div className="mx-auto max-w-6xl animate-slide-up space-y-12">
-          <h1 className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-4xl font-bold text-transparent">
+          <h1 className="bg-linear-to-r from-primary to-secondary bg-clip-text text-4xl font-bold text-transparent">
             Projects
           </h1>
 
@@ -70,7 +70,7 @@ export default function Projects() {
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/30 to-transparent opacity-0 backdrop-blur-sm transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-linear-to-t from-background/80 via-background/30 to-transparent opacity-0 backdrop-blur-xs transition-opacity duration-500 group-hover:opacity-100" />
 
                   <div className="absolute inset-0 flex flex-col justify-between p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                     <div>
@@ -87,7 +87,7 @@ export default function Projects() {
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="rounded-full bg-primary/10 px-3 py-1 text-sm text-primary backdrop-blur-sm"
+                            className="rounded-full bg-primary/10 px-3 py-1 text-sm text-primary backdrop-blur-xs"
                           >
                             {tag}
                           </span>
@@ -97,13 +97,13 @@ export default function Projects() {
                       <div className="flex gap-4">
                         <Link
                           href={project.links.github}
-                          className="rounded-full bg-secondary/10 p-2 text-secondary backdrop-blur-sm transition-all hover:bg-secondary/20 hover:shadow-lg hover:shadow-secondary/25"
+                          className="rounded-full bg-secondary/10 p-2 text-secondary backdrop-blur-xs transition-all hover:bg-secondary/20 hover:shadow-lg hover:shadow-secondary/25"
                         >
                           <Github className="h-5 w-5" />
                         </Link>
                         <Link
                           href={project.links.live}
-                          className="rounded-full bg-primary/10 p-2 text-primary backdrop-blur-sm transition-all hover:bg-primary/20 hover:shadow-lg hover:shadow-primary/25"
+                          className="rounded-full bg-primary/10 p-2 text-primary backdrop-blur-xs transition-all hover:bg-primary/20 hover:shadow-lg hover:shadow-primary/25"
                         >
                           <ExternalLink className="h-5 w-5" />
                         </Link>
