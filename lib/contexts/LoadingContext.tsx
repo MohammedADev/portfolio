@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 interface LoadingContextType {
   isLoading: boolean;
@@ -9,14 +10,13 @@ interface LoadingContextType {
 
 const LoadingContext = createContext<LoadingContextType>({ isLoading: false });
 
-export function LoadingProvider({ children }: { children: React.ReactNode }) {
+function LoadingProviderInner({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
     setIsLoading(true);
-
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 500);
@@ -28,6 +28,14 @@ export function LoadingProvider({ children }: { children: React.ReactNode }) {
     <LoadingContext.Provider value={{ isLoading }}>
       {children}
     </LoadingContext.Provider>
+  );
+}
+
+export function LoadingProvider({ children }: { children: React.ReactNode }) {
+  return (
+    <Suspense fallback={null}>
+      <LoadingProviderInner>{children}</LoadingProviderInner>
+    </Suspense>
   );
 }
 

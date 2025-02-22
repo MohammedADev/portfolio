@@ -30,8 +30,10 @@
         "next/core-web-vitals",
         "plugin:prettier/recommended"
       ],
+      "parser": "@typescript-eslint/parser",
       "parserOptions": {
-        "project": "./tsconfig.json"
+        "project": "./tsconfig.json",
+        "sourceType": "module"
       },
       "rules": {
         "prettier/prettier": [
