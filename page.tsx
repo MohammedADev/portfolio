@@ -63,28 +63,30 @@ export default function CameraPortfolio() {
 
   return (
     <div
-      className="relative min-h-screen overflow-hidden bg-black text-white"
+      className="relative min-h-screen overflow-hidden bg-background text-foreground"
       onMouseMove={handleMouseMove}
-      style={{
-        background: "linear-gradient(to bottom right, #000000, #1a1a2e)",
-      }}
     >
+      {/* Background Gradient */}
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--primary),0.1),transparent_50%)]" />
+
       {/* Custom Cursor */}
       <div
         className="pointer-events-none fixed z-50 h-8 w-8 mix-blend-difference transition-transform duration-75"
         style={{
-          transform: `translate(${cursorPosition.x - 16}px, ${cursorPosition.y - 16}px)`,
+          transform: `translate(${cursorPosition.x - 16}px, ${
+            cursorPosition.y - 16
+          }px)`,
         }}
       >
-        <div className="h-full w-full rounded-full border border-cyan-500" />
-        <div className="absolute inset-0 m-auto h-1 w-1 rounded-full bg-cyan-500" />
+        <div className="h-full w-full rounded-full border border-primary" />
+        <div className="absolute inset-0 m-auto h-1 w-1 rounded-full bg-primary" />
       </div>
 
       {/* Loading Screen */}
       {isLoading && <LoadingScreen isLoading={isLoading} />}
 
       {/* Navigation */}
-      <nav className="fixed right-0 top-0 z-40 flex h-screen w-16 flex-col items-center justify-center gap-8 border-l border-white/10 bg-black/20 backdrop-blur-sm">
+      <nav className="fixed right-0 top-0 z-40 flex h-screen w-16 flex-col items-center justify-center gap-8 border-l border-border bg-muted/5 backdrop-blur-sm">
         {[
           { icon: Camera, id: "viewfinder" },
           { icon: Grid, id: "projects" },
@@ -98,8 +100,8 @@ export default function CameraPortfolio() {
             className={cn(
               "flex h-10 w-10 items-center justify-center rounded-lg transition-all",
               activeSection === id
-                ? "bg-cyan-500 text-black"
-                : "text-white/60 hover:bg-white/10 hover:text-white",
+                ? "bg-primary text-primary-foreground"
+                : "text-muted-foreground hover:bg-muted/10 hover:text-foreground",
             )}
           >
             <Icon className="h-5 w-5" />
@@ -108,23 +110,21 @@ export default function CameraPortfolio() {
       </nav>
 
       {/* Main Content */}
-      <main className="min-h-screen w-[calc(100%-4rem)] p-8">
+      <main className="relative min-h-screen w-[calc(100%-4rem)]">
         {/* Viewfinder Overlay */}
-        <div className="pointer-events-none fixed inset-0">
-          <div className="absolute left-8 top-8 font-mono text-sm text-cyan-500">
+        <div className="pointer-events-none fixed inset-0 font-mono text-sm">
+          <div className="absolute left-8 top-8 text-primary">
             <div>REC 00:00:00</div>
             <div>ISO AUTO</div>
           </div>
-          <div className="absolute right-24 top-8 font-mono text-sm text-purple-500">
+          <div className="absolute right-24 top-8 text-secondary">
             <div>ƒ/2.8</div>
             <div>1/125</div>
           </div>
-          <div className="absolute bottom-8 left-8 font-mono text-sm text-cyan-500">
-            READY
+          <div className="absolute bottom-8 left-8 text-primary">
+            {activeSection.toUpperCase()}
           </div>
-          <div className="absolute bottom-8 right-24 font-mono text-sm text-purple-500">
-            AF
-          </div>
+          <div className="absolute bottom-8 right-24 text-secondary">AF</div>
         </div>
 
         {/* Projects Grid */}

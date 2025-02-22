@@ -24,12 +24,10 @@ export default function Layout({ children, currentSection }: LayoutProps) {
 
   return (
     <div
-      className="relative min-h-screen overflow-hidden bg-black text-white"
+      className="relative min-h-screen overflow-hidden bg-background text-foreground"
       onMouseMove={handleMouseMove}
-      style={{
-        background: "linear-gradient(to bottom right, #000000, #1a1a2e)",
-      }}
     >
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--primary),0.1),transparent_50%)]" />
       <CustomCursor position={cursorPosition} />
       <LoadingScreen isLoading={isLoading} />
       <Navigation currentSection={currentSection} />

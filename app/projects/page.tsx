@@ -52,7 +52,7 @@ export default function Projects() {
     <Layout currentSection="projects">
       <div className="min-h-screen p-8 md:p-16">
         <div className="mx-auto max-w-6xl animate-slide-up space-y-12">
-          <h1 className="bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-4xl font-bold text-transparent">
+          <h1 className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-4xl font-bold text-transparent">
             Projects
           </h1>
 
@@ -63,21 +63,23 @@ export default function Projects() {
                 className="group relative animate-scale-in"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="relative aspect-video overflow-hidden rounded-lg">
+                <div className="relative aspect-video overflow-hidden rounded-lg border border-border bg-card/5">
                   <Image
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform group-hover:scale-105"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/30 to-transparent opacity-0 backdrop-blur-sm transition-opacity duration-500 group-hover:opacity-100" />
 
-                  <div className="absolute inset-0 flex flex-col justify-between p-6 opacity-0 transition-opacity group-hover:opacity-100">
+                  <div className="absolute inset-0 flex flex-col justify-between p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                     <div>
-                      <h2 className="mb-2 text-2xl font-bold">
+                      <h2 className="mb-2 text-2xl font-bold text-foreground">
                         {project.title}
                       </h2>
-                      <p className="text-white/80">{project.description}</p>
+                      <p className="text-muted-foreground">
+                        {project.description}
+                      </p>
                     </div>
 
                     <div className="space-y-4">
@@ -85,7 +87,7 @@ export default function Projects() {
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="rounded-full bg-white/10 px-2 py-1 text-sm backdrop-blur-sm"
+                            className="rounded-full bg-primary/10 px-3 py-1 text-sm text-primary backdrop-blur-sm"
                           >
                             {tag}
                           </span>
@@ -95,13 +97,13 @@ export default function Projects() {
                       <div className="flex gap-4">
                         <Link
                           href={project.links.github}
-                          className="rounded-full bg-white/10 p-2 backdrop-blur-sm transition-colors hover:bg-white/20"
+                          className="rounded-full bg-secondary/10 p-2 text-secondary backdrop-blur-sm transition-all hover:bg-secondary/20 hover:shadow-lg hover:shadow-secondary/25"
                         >
                           <Github className="h-5 w-5" />
                         </Link>
                         <Link
                           href={project.links.live}
-                          className="rounded-full bg-white/10 p-2 backdrop-blur-sm transition-colors hover:bg-white/20"
+                          className="rounded-full bg-primary/10 p-2 text-primary backdrop-blur-sm transition-all hover:bg-primary/20 hover:shadow-lg hover:shadow-primary/25"
                         >
                           <ExternalLink className="h-5 w-5" />
                         </Link>
