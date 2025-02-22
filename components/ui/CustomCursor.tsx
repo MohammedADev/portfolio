@@ -14,8 +14,8 @@ export default function CustomCursor({ position }: CustomCursorProps) {
       }}
       transition={{ type: "spring", stiffness: 500, damping: 28 }}
     >
-      <div className="h-full w-full rounded-full border border-cyan-500" />
-      <div className="absolute inset-0 m-auto h-1 w-1 rounded-full bg-cyan-500" />
+      <div className="h-full w-full rounded-full border border-primary" />
+      <div className="absolute inset-0 m-auto h-1 w-1 rounded-full bg-primary" />
     </motion.div>
   );
 }

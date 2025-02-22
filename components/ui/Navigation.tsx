@@ -17,7 +17,7 @@ export default function Navigation({ currentSection }: NavigationProps) {
   ];
 
   return (
-    <nav className="fixed right-0 top-0 z-40 flex h-screen w-16 flex-col items-center justify-center gap-8 border-l border-white/10 bg-black/20 backdrop-blur-sm">
+    <nav className="fixed right-0 top-0 z-40 flex h-screen w-16 flex-col items-center justify-center gap-8 border-l border-border bg-muted/5 backdrop-blur-sm">
       {navItems.map(({ icon: Icon, id, href }) => (
         <Link
           key={id}
@@ -25,8 +25,8 @@ export default function Navigation({ currentSection }: NavigationProps) {
           className={cn(
             "flex h-10 w-10 items-center justify-center rounded-lg transition-all",
             currentSection === id
-              ? "bg-cyan-500 text-black"
-              : "text-white/60 hover:bg-white/10 hover:text-white",
+              ? "bg-primary text-primary-foreground"
+              : "text-muted-foreground hover:bg-muted hover:text-foreground",
           )}
         >
           <Icon className="h-5 w-5" />
