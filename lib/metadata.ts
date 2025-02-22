@@ -19,7 +19,7 @@ export function constructMetadata({
   path,
 }: MetadataProps = {}): Metadata {
   const baseTitle = "Mohammed Abdelaziz";
-  const baseDescription = "A Developer with many hobbies and interests";
+  const baseDescription = "A Developer with many hobbies";
 
   return {
     title: title ? `${title} | ${baseTitle}` : baseTitle,
@@ -56,7 +56,7 @@ export function constructMetadata({
       title: title ? `${title} | ${baseTitle}` : baseTitle,
       description: description || baseDescription,
       images: [image || `${baseUrl}/og-image.jpg`],
-      creator: "@yourtwitterhandle",
+      creator: "@MohammedADev",
     },
     robots: {
       index: true,

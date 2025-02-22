@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Camera, Grid, ImageIcon, User, Mail, Menu } from "lucide-react";
+import { Camera, Grid, ImageIcon, User, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
+import ThemeToggle from "@/components/ThemeToggle";
 
 interface NavigationProps {
   currentSection: string;
@@ -13,11 +14,11 @@ export default function Navigation({ currentSection }: NavigationProps) {
     { icon: Grid, id: "projects", href: "/projects" },
     { icon: ImageIcon, id: "gallery", href: "/gallery" },
     { icon: Mail, id: "contact", href: "/contact" },
-    { icon: Menu, id: "menu", href: "#" },
   ];
 
   return (
-    <nav className="fixed right-0 top-0 z-40 flex h-screen w-16 flex-col items-center justify-center gap-8 border-l border-border bg-muted/5 backdrop-blur-xs">
+    <nav className="border-border bg-muted/5 fixed top-0 right-0 z-40 flex h-screen w-16 flex-col items-center justify-center gap-8 border-l backdrop-blur-xs">
+      <ThemeToggle activeSection={currentSection} />
       {navItems.map(({ icon: Icon, id, href }) => (
         <Link
           key={id}

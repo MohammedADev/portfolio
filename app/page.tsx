@@ -5,29 +5,29 @@ export default function Home() {
   return (
     <Layout currentSection="home">
       <div className="flex h-screen items-center justify-center p-8">
-        <div className="max-w-2xl animate-slide-up text-center">
+        <div className="animate-slide-up max-w-2xl text-center">
           <Link
             href="https://github.com/MohammedADev"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-block bg-linear-to-r from-primary to-secondary bg-clip-text text-4xl font-bold text-transparent md:text-6xl"
+            className="group from-primary to-secondary relative inline-block bg-linear-to-r bg-clip-text text-4xl font-bold text-transparent md:text-6xl"
           >
             Mohammed Abdelaziz
-            <span className="absolute bottom-0 left-0 h-1 w-full scale-0 bg-linear-to-r from-primary to-secondary transition-all duration-500 ease-in-out group-hover:scale-100" />
+            <span className="from-primary to-secondary absolute bottom-0 left-0 h-1 w-full scale-0 bg-linear-to-r transition-all duration-500 ease-in-out group-hover:scale-100" />
           </Link>
-          <p className="mb-12 text-xl text-muted-foreground md:text-2xl">
-            A Developer with many hobbies and interests
+          <p className="text-muted-foreground mb-12 text-xl md:text-2xl">
+            A Developer with many hobbies
           </p>
           <div className="flex justify-center gap-4">
             <Link
               href="/projects"
-              className="rounded-lg bg-primary px-6 py-3 text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-primary/20 rounded-lg px-6 py-3 transition-all hover:shadow-lg"
             >
               View Projects
             </Link>
             <Link
               href="/gallery"
-              className="rounded-lg bg-secondary px-6 py-3 text-secondary-foreground transition-all hover:bg-secondary/90 hover:shadow-lg hover:shadow-secondary/20"
+              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 hover:shadow-secondary/20 rounded-lg px-6 py-3 transition-all hover:shadow-lg"
             >
               View Gallery
             </Link>
