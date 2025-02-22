@@ -36,6 +36,7 @@ We take the security of this portfolio website seriously. If you discover any se
 ### Scope
 
 #### In Scope
+
 - Main website application (Next.js)
 - Authentication mechanisms
 - API endpoints
@@ -44,6 +45,7 @@ We take the security of this portfolio website seriously. If you discover any se
 - Client-side security
 
 #### Out of Scope
+
 - Third-party services
 - Hosted dependencies
 - Issues already reported
@@ -53,16 +55,19 @@ We take the security of this portfolio website seriously. If you discover any se
 This project implements the following security measures:
 
 1. **Input Validation**
+
    - Form sanitization
    - Type checking with TypeScript
    - API request validation
 
 2. **Data Protection**
+
    - Environment variables for sensitive data
    - Secure headers configuration
    - CORS policy implementation
 
 3. **Dependencies**
+
    - Regular security audits
    - Automated vulnerability scanning
    - Dependency version control

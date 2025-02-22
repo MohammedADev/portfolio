@@ -18,8 +18,8 @@ export const metadata = constructMetadata({
   title: "Mohammed Abdelaziz",
   description: "A Developer with many hobbies and interests",
   keywords: ["projects", "portfolio", "development", "photography"],
-  path: "/"
-})
+  path: "/",
+});
 
 export default function RootLayout({
   children,

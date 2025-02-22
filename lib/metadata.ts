@@ -1,14 +1,15 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
 interface MetadataProps {
-  title?: string
-  description?: string
-  keywords?: string[]
-  image?: string
-  path?: string
+  title?: string;
+  description?: string;
+  keywords?: string[];
+  image?: string;
+  path?: string;
 }
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mohammedabdelaziz.com"
+const baseUrl =
+  process.env.NEXT_PUBLIC_BASE_URL || "https://mohammedabdelaziz.com";
 
 export function constructMetadata({
   title,
@@ -17,13 +18,21 @@ export function constructMetadata({
   image,
   path,
 }: MetadataProps = {}): Metadata {
-  const baseTitle = "Mohammed Abdelaziz"
-  const baseDescription = "A Developer with many hobbies and interests"
+  const baseTitle = "Mohammed Abdelaziz";
+  const baseDescription = "A Developer with many hobbies and interests";
 
   return {
     title: title ? `${title} | ${baseTitle}` : baseTitle,
     description: description || baseDescription,
-    keywords: keywords || ["developer", "photography", "portfolio", "projects", "Mohammed Abdelaziz", "Mohammed", "Abdelaziz"],
+    keywords: keywords || [
+      "developer",
+      "photography",
+      "portfolio",
+      "projects",
+      "Mohammed Abdelaziz",
+      "Mohammed",
+      "Abdelaziz",
+    ],
     authors: [{ name: "Mohammed Abdelaziz" }],
     creator: "Mohammed Abdelaziz",
     openGraph: {
@@ -67,5 +76,5 @@ export function constructMetadata({
     },
     manifest: "/site.webmanifest",
     metadataBase: new URL(baseUrl),
-  }
-} 
+  };
+}

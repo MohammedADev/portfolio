@@ -29,11 +29,13 @@ A modern, minimalist portfolio website built with Next.js 14, TypeScript, and Ta
 ## Getting Started
 
 1. Clone the repository
+
 ```bash
 git clone https://github.com/MohammedADev/portfolio
 ```
 
 2. Install dependencies
+
 ```bash
 npm install
 # or
@@ -45,6 +47,7 @@ bun install
 ```
 
 3. Start the development server
+
 ```bash
 npm run dev
 # or

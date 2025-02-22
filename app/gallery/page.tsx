@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Layout from "@/components/layout"
-import Image from "next/image"
+import { useState } from "react";
+import Layout from "@/components/layout";
+import Image from "next/image";
 
 export default function Gallery() {
-  const [selectedCategory, setSelectedCategory] = useState("all")
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const categories = [
     { id: "all", name: "All" },
     { id: "urban", name: "Urban" },
     { id: "nature", name: "Nature" },
     { id: "portrait", name: "Portrait" },
-  ]
+  ];
 
   const photos = [
     {
@@ -49,17 +49,19 @@ export default function Gallery() {
       },
     },
     // Add more photos as needed
-  ]
+  ];
 
   const filteredPhotos =
-    selectedCategory === "all" ? photos : photos.filter((photo) => photo.category === selectedCategory)
+    selectedCategory === "all"
+      ? photos
+      : photos.filter((photo) => photo.category === selectedCategory);
 
   return (
     <Layout currentSection="gallery">
       <div className="min-h-screen p-8 md:p-16">
-        <div className="max-w-6xl mx-auto space-y-12 animate-slide-up">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-cyan-500 to-purple-500 text-transparent bg-clip-text">
+        <div className="mx-auto max-w-6xl animate-slide-up space-y-12">
+          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+            <h1 className="bg-gradient-to-r from-cyan-500 to-purple-500 bg-clip-text text-4xl font-bold text-transparent">
               Photography
             </h1>
 
@@ -68,8 +70,10 @@ export default function Gallery() {
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`px-4 py-2 rounded-full transition-colors ${
-                    selectedCategory === category.id ? "bg-cyan-500 text-black" : "bg-white/10 hover:bg-white/20"
+                  className={`rounded-full px-4 py-2 transition-colors ${
+                    selectedCategory === category.id
+                      ? "bg-cyan-500 text-black"
+                      : "bg-white/10 hover:bg-white/20"
                   }`}
                 >
                   {category.name}
@@ -78,26 +82,26 @@ export default function Gallery() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filteredPhotos.map((photo, index) => (
               <div
                 key={photo.id}
                 className="group relative animate-scale-in"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="aspect-[4/5] relative rounded-lg overflow-hidden">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
                   <Image
                     src={photo.src || "/placeholder.svg"}
                     alt={photo.title}
                     fill
                     className="object-cover transition-transform group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
 
-                  <div className="absolute inset-0 p-6 flex flex-col justify-between opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="absolute inset-0 flex flex-col justify-between p-6 opacity-0 transition-opacity group-hover:opacity-100">
                     <h2 className="text-2xl font-bold">{photo.title}</h2>
 
-                    <div className="space-y-2 text-sm font-mono">
+                    <div className="space-y-2 font-mono text-sm">
                       <p className="text-cyan-500">{photo.metadata.camera}</p>
                       <p className="text-purple-500">{photo.metadata.lens}</p>
                       <p className="text-white/80">{photo.metadata.settings}</p>
@@ -110,6 +114,5 @@ export default function Gallery() {
         </div>
       </div>
     </Layout>
-  )
+  );
 }
-
