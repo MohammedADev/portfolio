@@ -86,7 +86,7 @@ export default function CameraPortfolio() {
       {isLoading && <LoadingScreen isLoading={isLoading} />}
 
       {/* Navigation */}
-      <nav className="fixed right-0 top-0 z-40 flex h-screen w-16 flex-col items-center justify-center gap-8 border-l border-border bg-muted/5 backdrop-blur-sm">
+      <nav className="fixed right-0 top-0 z-40 flex h-screen w-16 flex-col items-center justify-center gap-8 border-l border-border bg-muted/5 backdrop-blur-xs">
         {[
           { icon: Camera, id: "viewfinder" },
           { icon: Grid, id: "projects" },
@@ -136,7 +136,7 @@ export default function CameraPortfolio() {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="aspect-video overflow-hidden rounded-lg bg-gray-900">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-cyan-500/20 opacity-0 transition-opacity group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-linear-to-br from-purple-500/20 to-cyan-500/20 opacity-0 transition-opacity group-hover:opacity-100" />
                 <Image
                   src="/placeholder.svg"
                   alt={project.title}

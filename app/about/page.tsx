@@ -15,7 +15,7 @@ export default function About() {
       <div className="min-h-screen p-8 md:p-16">
         <div className="mx-auto grid max-w-6xl animate-slide-up items-start gap-12 md:grid-cols-2">
           <div className="space-y-6">
-            <h1 className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-4xl font-bold text-transparent">
+            <h1 className="bg-linear-to-r from-primary to-secondary bg-clip-text text-4xl font-bold text-transparent">
               About Me
             </h1>
             <div className="relative aspect-square overflow-hidden rounded-lg border border-border bg-card">
@@ -25,7 +25,7 @@ export default function About() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-background/60 to-transparent" />
             </div>
           </div>
 
@@ -44,7 +44,7 @@ export default function About() {
                 {skills.map((skill) => (
                   <div
                     key={skill.name}
-                    className="transform rounded-lg border border-border bg-card/50 p-4 backdrop-blur-sm transition-all hover:scale-105 hover:bg-card"
+                    className="transform rounded-lg border border-border bg-card/50 p-4 backdrop-blur-xs transition-all hover:scale-105 hover:bg-card"
                   >
                     <skill.icon
                       className={`h-6 w-6 text-${skill.color} mb-2`}
@@ -62,7 +62,7 @@ export default function About() {
                 Experience
               </h2>
               <div className="space-y-4">
-                <div className="rounded-lg border border-border bg-card/50 p-4 backdrop-blur-sm">
+                <div className="rounded-lg border border-border bg-card/50 p-4 backdrop-blur-xs">
                   <h3 className="font-medium text-primary">
                     Fullstack Engineer
                   </h3>
@@ -78,7 +78,7 @@ export default function About() {
                 Projects
               </h2>
               <div className="space-y-4">
-                <div className="rounded-lg border border-border bg-card/50 p-4 backdrop-blur-sm">
+                <div className="rounded-lg border border-border bg-card/50 p-4 backdrop-blur-xs">
                   <h3 className="font-medium text-secondary">
                     Creator & Developer
                   </h3>
