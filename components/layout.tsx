@@ -6,6 +6,8 @@ import CustomCursor from "./ui/CustomCursor";
 import LoadingScreen from "./ui/LoadingScreen";
 import Navigation from "./ui/Navigation";
 import ViewfinderOverlay from "./ui/ViewfinderOverlay";
+import { cn } from "@/lib/utils";
+import { useLoading } from "@/lib/contexts/LoadingContext";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -14,14 +16,7 @@ interface LayoutProps {
 
 export default function Layout({ children, currentSection }: LayoutProps) {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, []);
+  const { isLoading } = useLoading();
 
   const handleMouseMove = (e: React.MouseEvent) => {
     setCursorPosition({ x: e.clientX, y: e.clientY });
@@ -39,7 +34,16 @@ export default function Layout({ children, currentSection }: LayoutProps) {
       <LoadingScreen isLoading={isLoading} />
       <Navigation currentSection={currentSection} />
       <ViewfinderOverlay currentSection={currentSection} />
-      <main className="min-h-screen w-[calc(100%-4rem)]">{children}</main>
+      <main
+        className={cn(
+          "min-h-screen w-[calc(100%-4rem)]",
+          isLoading
+            ? "opacity-0"
+            : "opacity-100 transition-opacity duration-500",
+        )}
+      >
+        {children}
+      </main>
     </div>
   );
 }
