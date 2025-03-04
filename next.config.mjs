@@ -5,7 +5,6 @@ const nextConfig = {
       bodySizeLimit: "2mb",
     },
     optimizePackageImports: ["lucide-react"],
-    typedRoutes: true,
   },
   images: {
     remotePatterns: [

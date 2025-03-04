@@ -1,13 +1,21 @@
 import Link from "next/link";
+import type { LinkProps } from "next/link";
 import { Camera, Grid, ImageIcon, User, Mail, Menu } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface NavigationProps {
   currentSection: string;
 }
 
+interface NavItem {
+  icon: LucideIcon;
+  id: string;
+  href: NonNullable<LinkProps<string>["href"]>;
+}
+
 export default function Navigation({ currentSection }: NavigationProps) {
-  const navItems = [
+  const navItems: NavItem[] = [
     { icon: Camera, id: "home", href: "/" },
     { icon: User, id: "about", href: "/about" },
     { icon: Grid, id: "projects", href: "/projects" },
@@ -17,7 +25,7 @@ export default function Navigation({ currentSection }: NavigationProps) {
   ];
 
   return (
-    <nav className="fixed right-0 top-0 z-40 flex h-screen w-16 flex-col items-center justify-center gap-8 border-l border-border bg-muted/5 backdrop-blur-xs">
+    <nav className="border-border bg-muted/5 fixed top-0 right-0 z-40 flex h-screen w-16 flex-col items-center justify-center gap-8 border-l backdrop-blur-xs">
       {navItems.map(({ icon: Icon, id, href }) => (
         <Link
           key={id}
