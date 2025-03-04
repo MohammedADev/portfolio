@@ -4,85 +4,82 @@ import { Code2, Server, Database, Terminal } from "lucide-react";
 
 export default function About() {
   const skills = [
-    { name: "Fullstack Development", icon: Code2, color: "primary" },
-    { name: "Backend Systems", icon: Server, color: "secondary" },
-    { name: "Database Engineering", icon: Database, color: "accent" },
-    { name: "DevOps & Cloud", icon: Terminal, color: "muted" },
+    { name: "Fullstack Development", icon: Code2, color: "text-primary" },
+    { name: "Backend Systems", icon: Server, color: "text-secondary" },
+    { name: "Database Engineering", icon: Database, color: "text-accent" },
+    { name: "DevOps & Cloud", icon: Terminal, color: "text-secondary" },
   ];
 
   return (
     <Layout currentSection="about">
       <div className="min-h-screen p-8 md:p-16">
-        <div className="mx-auto grid max-w-6xl animate-slide-up items-start gap-12 md:grid-cols-2">
+        <div className="animate-slide-up mx-auto grid max-w-6xl items-start gap-12 md:grid-cols-2">
           <div className="space-y-6">
-            <h1 className="bg-linear-to-r from-primary to-secondary bg-clip-text text-4xl font-bold text-transparent">
+            <h1 className="from-primary to-secondary bg-gradient-to-r bg-clip-text text-4xl font-bold text-transparent">
               About Me
             </h1>
-            <div className="relative aspect-square overflow-hidden rounded-lg border border-border bg-card">
+            <div className="border-border relative w-full overflow-hidden rounded-lg border">
               <Image
-                src="/placeholder.svg"
+                src="/images/profile.JPG"
                 alt="Profile"
-                fill
-                className="object-cover"
+                width={600}
+                height={400}
+                priority
+                className="aspect-auto w-full object-cover"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-background/60 to-transparent" />
+              <div className="from-background/60 absolute inset-0 bg-gradient-to-t to-transparent" />
             </div>
           </div>
-
           <div className="space-y-8">
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              I'm a Computer Science student based in Anaheim, CA, with 7 years
-              of non-professional programming experience. I specialize in
-              full-stack development and distributed systems, with a proven
-              track record of leading platforms serving 40,000+ daily users and
-              optimizing performance through advanced caching strategies.
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              I&apos;m a Computer Science student based in the Los Angeles
+              Metropolitan Area, with 7 years of programming experience. I
+              specialize in full-stack development and distributed systems, with
+              a proven track record of leading platforms serving 40,000+ daily
+              users and optimizing performance through advanced caching
+              strategies.
             </p>
-
             <div className="space-y-4">
-              <h2 className="text-2xl font-semibold text-foreground">Skills</h2>
+              <h2 className="text-foreground text-2xl font-semibold">Skills</h2>
               <div className="grid grid-cols-2 gap-4">
                 {skills.map((skill) => (
                   <div
                     key={skill.name}
-                    className="transform rounded-lg border border-border bg-card/50 p-4 backdrop-blur-xs transition-all hover:scale-105 hover:bg-card"
+                    className="border-border bg-card/50 hover:bg-card transform rounded-lg border p-4 backdrop-blur-xs transition-all hover:scale-105"
                   >
-                    <skill.icon
-                      className={`h-6 w-6 text-${skill.color} mb-2`}
-                    />
-                    <h3 className="font-medium text-card-foreground">
+                    <skill.icon className={`h-6 w-6 ${skill.color} mb-2`} />
+                    <h3 className="text-card-foreground font-medium">
                       {skill.name}
                     </h3>
                   </div>
                 ))}
               </div>
             </div>
-
             <div className="space-y-4">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-foreground text-2xl font-semibold">
                 Experience
               </h2>
               <div className="space-y-4">
-                <div className="rounded-lg border border-border bg-card/50 p-4 backdrop-blur-xs">
-                  <h3 className="font-medium text-primary">
+                <div className="border-border bg-card/50 rounded-lg border p-4 backdrop-blur-xs">
+                  <h3 className="text-primary font-medium">
                     Fullstack Engineer
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     Pear AI • June 2024 - Present
                   </p>
                 </div>
               </div>
             </div>
-
             <div className="space-y-4">
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-foreground text-2xl font-semibold">
                 Projects
               </h2>
               <div className="space-y-4">
-                <div className="rounded-lg border border-border bg-card/50 p-4 backdrop-blur-xs">
-                  <h3 className="font-medium text-secondary">
+                <div className="border-border bg-card/50 rounded-lg border p-4 backdrop-blur-xs">
+                  <h3 className="text-secondary font-medium">
                     Creator & Developer
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     Canvas Discord Bot • May 2023 - Present
                   </p>
                 </div>

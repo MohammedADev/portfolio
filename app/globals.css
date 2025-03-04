@@ -194,7 +194,10 @@
     }
   }
 }
-
+.custom-cursor {
+  transform: translate(var(--cursor-x, 0px), var(--cursor-y, 0px));
+  transition: transform 0.15s ease-out;
+}
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
