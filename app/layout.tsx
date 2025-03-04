@@ -1,8 +1,6 @@
-import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { constructMetadata } from "@/lib/metadata";
-import { LoadingProvider } from "@/lib/contexts/LoadingContext";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,9 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <LoadingProvider>
-          {children} <SpeedInsights />
-        </LoadingProvider>
+        {children} <SpeedInsights />
       </body>
     </html>
   );

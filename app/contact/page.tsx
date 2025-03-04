@@ -2,29 +2,29 @@ import Layout from "@/components/layout";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send } from "lucide-react";
 
 export default function Contact() {
   return (
     <Layout currentSection="contact">
       <div className="min-h-screen p-8 md:p-16">
-        <div className="mx-auto grid max-w-6xl animate-slide-up gap-12 md:grid-cols-2">
+        <div className="animate-slide-up mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
           <div className="space-y-8">
-            <h1 className="bg-linear-to-r from-primary to-secondary bg-clip-text text-4xl font-bold text-transparent">
+            <h1 className="from-primary to-secondary bg-linear-to-r bg-clip-text text-4xl font-bold text-transparent">
               Contact
             </h1>
 
-            <p className="text-lg text-muted-foreground">
-              Let's discuss your next project or collaboration opportunity.
+            <p className="text-muted-foreground text-lg">
+              Let&apos;s discuss your next project or collaboration opportunity.
             </p>
 
             <div className="space-y-6">
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary" />
+                <div className="bg-primary/10 flex h-12 w-12 items-center justify-center rounded-full">
+                  <Mail className="text-primary h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Email</h3>
+                  <h3 className="text-foreground font-medium">Email</h3>
                   <p className="text-muted-foreground">
                     work@mohammedabdelaziz.com
                   </p>
@@ -32,11 +32,11 @@ export default function Contact() {
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
-                  <MapPin className="h-6 w-6 text-accent" />
+                <div className="bg-accent/10 flex h-12 w-12 items-center justify-center rounded-full">
+                  <MapPin className="text-accent h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Location</h3>
+                  <h3 className="text-foreground font-medium">Location</h3>
                   <p className="text-muted-foreground">Los Angeles, CA</p>
                 </div>
               </div>
@@ -46,7 +46,7 @@ export default function Contact() {
           <div className="space-y-6">
             <form className="space-y-6">
               <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">
+                <label className="text-foreground text-sm font-medium">
                   Name
                 </label>
                 <Input
@@ -57,7 +57,7 @@ export default function Contact() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">
+                <label className="text-foreground text-sm font-medium">
                   Email
                 </label>
                 <Input
@@ -68,16 +68,16 @@ export default function Contact() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">
+                <label className="text-foreground text-sm font-medium">
                   Message
                 </label>
                 <Textarea
                   placeholder="Your message"
-                  className="min-h-[150px] border-border bg-card/5"
+                  className="border-border bg-card/5 min-h-[150px]"
                 />
               </div>
 
-              <Button className="group relative w-full overflow-hidden bg-primary text-background shadow-lg transition-transform hover:scale-[0.98] hover:shadow-primary/25 active:scale-95">
+              <Button className="group bg-primary text-background hover:shadow-primary/25 relative w-full overflow-hidden shadow-lg transition-transform hover:scale-[0.98] active:scale-95">
                 <div className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-100">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(var(--secondary),0.3),transparent_70%)]" />
                 </div>

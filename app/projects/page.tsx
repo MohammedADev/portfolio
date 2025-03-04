@@ -1,15 +1,9 @@
+"use client";
 import Layout from "@/components/layout";
 import Image from "next/image";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import Link from "next/link";
-import { constructMetadata } from "@/lib/metadata";
-
-export const metadata = constructMetadata({
-  title: "Projects",
-  description: "Explore my portfolio of development and photography projects",
-  keywords: ["projects", "portfolio", "development", "photography"],
-  path: "/projects",
-});
+import { SiGithub } from "react-icons/si";
 
 export default function Projects() {
   const projects = [
@@ -20,7 +14,7 @@ export default function Projects() {
       image: "/placeholder.svg",
       tags: ["Next.js", "TypeScript", "Redis", "FastAPI", "Supabase", "Stripe"],
       links: {
-        github: "#",
+        github: "https://trypear.ai/",
         live: "#",
       },
     },
@@ -42,7 +36,7 @@ export default function Projects() {
       image: "/placeholder.svg",
       tags: ["Discord.js", "Node.js", "Supabase", "TypeScript"],
       links: {
-        github: "#",
+        github: "https://github.com/MohammedADev/Canvas-Discord-Bot",
         live: "#",
       },
     },
@@ -51,8 +45,8 @@ export default function Projects() {
   return (
     <Layout currentSection="projects">
       <div className="min-h-screen p-8 md:p-16">
-        <div className="mx-auto max-w-6xl animate-slide-up space-y-12">
-          <h1 className="bg-linear-to-r from-primary to-secondary bg-clip-text text-4xl font-bold text-transparent">
+        <div className="animate-slide-up mx-auto max-w-6xl space-y-12">
+          <h1 className="from-primary to-secondary bg-linear-to-r bg-clip-text text-4xl font-bold text-transparent">
             Projects
           </h1>
 
@@ -60,21 +54,21 @@ export default function Projects() {
             {projects.map((project, index) => (
               <div
                 key={project.title}
-                className="group relative animate-scale-in"
+                className="group animate-scale-in relative"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="relative aspect-video overflow-hidden rounded-lg border border-border bg-card/5">
+                <div className="border-border bg-card/5 relative aspect-video overflow-hidden rounded-lg border">
                   <Image
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-background/80 via-background/30 to-transparent opacity-0 backdrop-blur-xs transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="from-background/80 via-background/30 absolute inset-0 bg-linear-to-t to-transparent opacity-0 backdrop-blur-xs transition-opacity duration-500 group-hover:opacity-100" />
 
                   <div className="absolute inset-0 flex flex-col justify-between p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                     <div>
-                      <h2 className="mb-2 text-2xl font-bold text-foreground">
+                      <h2 className="text-foreground mb-2 text-2xl font-bold">
                         {project.title}
                       </h2>
                       <p className="text-muted-foreground">
@@ -87,7 +81,7 @@ export default function Projects() {
                         {project.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="rounded-full bg-primary/10 px-3 py-1 text-sm text-primary backdrop-blur-xs"
+                            className="bg-primary/10 text-primary rounded-full px-3 py-1 text-sm backdrop-blur-xs"
                           >
                             {tag}
                           </span>
@@ -96,14 +90,22 @@ export default function Projects() {
 
                       <div className="flex gap-4">
                         <Link
-                          href={project.links.github}
-                          className="rounded-full bg-secondary/10 p-2 text-secondary backdrop-blur-xs transition-all hover:bg-secondary/20 hover:shadow-lg hover:shadow-secondary/25"
+                          href={
+                            project.links.github
+                              ? { pathname: project.links.github }
+                              : { pathname: "#" }
+                          }
+                          className="bg-secondary/10 text-secondary hover:bg-secondary/20 hover:shadow-secondary/25 rounded-full p-2 backdrop-blur-xs transition-all hover:shadow-lg"
                         >
-                          <Github className="h-5 w-5" />
+                          <SiGithub className="h-5 w-5" />
                         </Link>
                         <Link
-                          href={project.links.live}
-                          className="rounded-full bg-primary/10 p-2 text-primary backdrop-blur-xs transition-all hover:bg-primary/20 hover:shadow-lg hover:shadow-primary/25"
+                          href={
+                            project.links.live
+                              ? { pathname: project.links.live }
+                              : { pathname: "#" }
+                          }
+                          className="bg-primary/10 text-primary hover:bg-primary/20 hover:shadow-primary/25 rounded-full p-2 backdrop-blur-xs transition-all hover:shadow-lg"
                         >
                           <ExternalLink className="h-5 w-5" />
                         </Link>

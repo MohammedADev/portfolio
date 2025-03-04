@@ -4,19 +4,10 @@ import { useEffect, useState } from "react";
 import { Camera, Grid, ImageIcon, Menu, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import LoadingScreen from "./components/ui/LoadingScreen";
 
 export default function CameraPortfolio() {
-  const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState("viewfinder");
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     setCursorPosition({ x: e.clientX, y: e.clientY });
@@ -63,7 +54,7 @@ export default function CameraPortfolio() {
 
   return (
     <div
-      className="relative min-h-screen overflow-hidden bg-background text-foreground"
+      className="bg-background text-foreground relative min-h-screen overflow-hidden"
       onMouseMove={handleMouseMove}
     >
       {/* Background Gradient */}
@@ -78,15 +69,12 @@ export default function CameraPortfolio() {
           }px)`,
         }}
       >
-        <div className="h-full w-full rounded-full border border-primary" />
-        <div className="absolute inset-0 m-auto h-1 w-1 rounded-full bg-primary" />
+        <div className="border-primary h-full w-full rounded-full border" />
+        <div className="bg-primary absolute inset-0 m-auto h-1 w-1 rounded-full" />
       </div>
 
-      {/* Loading Screen */}
-      {isLoading && <LoadingScreen isLoading={isLoading} />}
-
       {/* Navigation */}
-      <nav className="fixed right-0 top-0 z-40 flex h-screen w-16 flex-col items-center justify-center gap-8 border-l border-border bg-muted/5 backdrop-blur-xs">
+      <nav className="border-border bg-muted/5 fixed top-0 right-0 z-40 flex h-screen w-16 flex-col items-center justify-center gap-8 border-l backdrop-blur-xs">
         {[
           { icon: Camera, id: "viewfinder" },
           { icon: Grid, id: "projects" },
@@ -113,18 +101,18 @@ export default function CameraPortfolio() {
       <main className="relative min-h-screen w-[calc(100%-4rem)]">
         {/* Viewfinder Overlay */}
         <div className="pointer-events-none fixed inset-0 font-mono text-sm">
-          <div className="absolute left-8 top-8 text-primary">
+          <div className="text-primary absolute top-8 left-8">
             <div>REC 00:00:00</div>
             <div>ISO AUTO</div>
           </div>
-          <div className="absolute right-24 top-8 text-secondary">
+          <div className="text-secondary absolute top-8 right-24">
             <div>ƒ/2.8</div>
             <div>1/125</div>
           </div>
-          <div className="absolute bottom-8 left-8 text-primary">
+          <div className="text-primary absolute bottom-8 left-8">
             {activeSection.toUpperCase()}
           </div>
-          <div className="absolute bottom-8 right-24 text-secondary">AF</div>
+          <div className="text-secondary absolute right-24 bottom-8">AF</div>
         </div>
 
         {/* Projects Grid */}
@@ -132,7 +120,7 @@ export default function CameraPortfolio() {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className="group relative animate-scale-in"
+              className="group animate-scale-in relative"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="aspect-video overflow-hidden rounded-lg bg-gray-900">
