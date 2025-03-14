@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Layout from "@/components/layout";
+
 import Image from "next/image";
+import PageLayout from "@/components/ui/PageLayout";
 
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -57,7 +58,7 @@ export default function Gallery() {
       : photos.filter((photo) => photo.category === selectedCategory);
 
   return (
-    <Layout currentSection="gallery">
+    <PageLayout currentSection="gallery">
       <div className="min-h-screen p-8 md:p-16">
         <div className="animate-slide-up mx-auto max-w-6xl space-y-12">
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
@@ -117,6 +118,6 @@ export default function Gallery() {
           </div>
         </div>
       </div>
-    </Layout>
+    </PageLayout>
   );
 }

@@ -1,12 +1,12 @@
-import Layout from "@/components/layout";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Mail, MapPin, Send } from "lucide-react";
+import PageLayout from "@/components/ui/PageLayout";
 
 export default function Contact() {
   return (
-    <Layout currentSection="contact">
+    <PageLayout currentSection="contact">
       <div className="min-h-screen p-8 md:p-16">
         <div className="animate-slide-up mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
           <div className="space-y-8">
@@ -90,6 +90,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-    </Layout>
+    </PageLayout>
   );
 }

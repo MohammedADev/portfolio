@@ -1,9 +1,10 @@
 "use client";
-import Layout from "@/components/layout";
+
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { SiGithub } from "react-icons/si";
+import PageLayout from "@/components/ui/PageLayout";
 
 export default function Projects() {
   const projects = [
@@ -43,7 +44,7 @@ export default function Projects() {
   ];
 
   return (
-    <Layout currentSection="projects">
+    <PageLayout currentSection="projects">
       <div className="min-h-screen p-8 md:p-16">
         <div className="animate-slide-up mx-auto max-w-6xl space-y-12">
           <h1 className="from-primary to-secondary bg-gradient-to-r bg-clip-text text-4xl font-bold text-transparent">
@@ -118,6 +119,6 @@ export default function Projects() {
           </div>
         </div>
       </div>
-    </Layout>
+    </PageLayout>
   );
 }

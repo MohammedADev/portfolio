@@ -1,6 +1,6 @@
-import Layout from "@/components/layout";
 import Image from "next/image";
 import { Code2, Server, Database, Terminal } from "lucide-react";
+import PageLayout from "@/components/ui/PageLayout";
 
 export default function About() {
   const skills = [
@@ -11,7 +11,7 @@ export default function About() {
   ];
 
   return (
-    <Layout currentSection="about">
+    <PageLayout currentSection="about">
       <div className="min-h-screen p-8 md:p-16">
         <div className="animate-slide-up mx-auto grid max-w-6xl items-start gap-12 md:grid-cols-2">
           <div className="space-y-6">
@@ -88,6 +88,6 @@ export default function About() {
           </div>
         </div>
       </div>
-    </Layout>
+    </PageLayout>
   );
 }
