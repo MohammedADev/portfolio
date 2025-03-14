@@ -67,7 +67,7 @@ export default function Projects() {
   ];
 
   return (
-    <PageLayout currentSection="projects">
+    <PageLayout currentSection="experience">
       <div className="min-h-screen p-8 pt-16 md:p-16 md:pt-24">
         <div className="animate-fade-in mx-auto max-w-6xl space-y-12">
           <div>
