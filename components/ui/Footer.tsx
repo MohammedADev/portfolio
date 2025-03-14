@@ -78,10 +78,10 @@ export default function Footer() {
                   About
                 </Link>
                 <Link
-                  href="/projects"
+                  href="/experience"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Projects
+                  Experience
                 </Link>
                 <Link
                   href="/gallery"

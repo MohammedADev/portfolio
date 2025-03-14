@@ -57,7 +57,7 @@ export default function ViewfinderOverlay({
 
   const getAperture = () => {
     switch (currentSection) {
-      case "projects":
+      case "experience":
         return "ƒ/2.8";
       case "gallery":
         return "ƒ/1.8";
@@ -72,7 +72,7 @@ export default function ViewfinderOverlay({
 
   const getShutterSpeed = () => {
     switch (currentSection) {
-      case "projects":
+      case "experience":
         return "1/125";
       case "gallery":
         return "1/60";

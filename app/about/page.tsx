@@ -110,10 +110,10 @@ export default function About() {
             </div>
 
             <div className="mt-8 flex justify-start">
-              <Link href="/projects">
+              <Link href="/experience">
                 <Button className="group relative overflow-hidden">
                   <span className="relative z-10 flex items-center">
-                    View All Projects
+                    View All Experience
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </span>
                   <span className="from-primary via-secondary to-primary group-hover:animate-shimmer absolute inset-0 bg-gradient-to-r bg-[length:200%_100%] opacity-0 transition-opacity group-hover:opacity-50"></span>

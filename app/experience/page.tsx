@@ -1,9 +1,8 @@
-import { Button } from "@/components/ui/button";
 import PageLayout from "@/components/ui/PageLayout";
-import { ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { SiGithub } from "react-icons/si";
 
 interface Project {
   id: number;
@@ -128,7 +127,7 @@ export default function Projects() {
                         rel="noopener noreferrer"
                       >
                         <Button variant="outline" size="sm" className="gap-2">
-                          <SiGithub className="h-4 w-4" />
+                          <Github className="h-4 w-4" />
                           Code
                         </Button>
                       </Link>

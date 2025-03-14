@@ -60,10 +60,10 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col justify-center gap-4 pt-6 sm:flex-row">
-            <Link href="/projects">
+            <Link href="/experience">
               <Button className="group bg-primary text-primary-foreground hover:bg-primary/90 relative w-full overflow-hidden sm:w-auto">
                 <span className="relative z-10 flex items-center">
-                  View Projects
+                  View Experience
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>
                 <span className="from-primary via-secondary to-primary group-hover:animate-shimmer absolute inset-0 bg-gradient-to-r bg-[length:200%_100%] opacity-0 transition-opacity group-hover:opacity-50"></span>

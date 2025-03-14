@@ -30,7 +30,12 @@ export default function TabNavigation({ currentSection }: TabNavigationProps) {
     () => [
       { id: "home", label: "Home", href: "/", icon: Camera },
       { id: "about", label: "About", href: "/about", icon: User },
-      { id: "projects", label: "Projects", href: "/projects", icon: Grid },
+      {
+        id: "experience",
+        label: "Experience",
+        href: "/experience",
+        icon: Grid,
+      },
       { id: "gallery", label: "Gallery", href: "/gallery", icon: ImageIcon },
       { id: "contact", label: "Contact", href: "/contact", icon: Mail },
     ],
