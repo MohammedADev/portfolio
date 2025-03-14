@@ -1,117 +1,151 @@
-"use client";
-
-import Image from "next/image";
-import { ExternalLink } from "lucide-react";
-import Link from "next/link";
-import { SiGithub } from "react-icons/si";
 import PageLayout from "@/components/ui/PageLayout";
+import { Button } from "@/components/ui/button";
+import { ExternalLink, Github } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  links: {
+    demo?: string;
+    github?: string;
+  };
+}
 
 export default function Projects() {
-  const projects = [
+  const projects: Project[] = [
     {
-      title: "Pear AI",
-      description:
-        "Y Combinator-backed project featuring landing page and Stripe payment integration, serving 200k+ visitors annually. Built with Next.js and TypeScript, optimized for global performance.",
-      image: "/placeholder.svg",
-      tags: ["Next.js", "TypeScript", "Redis", "FastAPI", "Supabase", "Stripe"],
-      links: {
-        github: "https://trypear.ai/",
-        live: "#",
-      },
-    },
-    {
-      title: "Aniorb",
-      description:
-        "Redis-backed distributed streaming platform serving 40,000+ daily active users. Achieved 30% latency reduction through optimization and 500% YoY growth.",
-      image: "/placeholder.svg",
-      tags: ["React", "Docker", "Supabase", "Node.js", "Tailwind CSS"],
-      links: {
-        github: "#",
-        live: "#",
-      },
-    },
-    {
+      id: 1,
       title: "Canvas Discord Bot",
       description:
-        "Automated student workflow bot integrated with Canvas LMS API, reducing missed deadlines by 25% while maintaining 99.9% uptime.",
-      image: "/placeholder.svg",
-      tags: ["Discord.js", "Node.js", "Supabase", "TypeScript"],
+        "A Discord bot that integrates with Canvas LMS to help students track assignments and deadlines. Built with Discord.js and Node.js.",
+      image: "/placeholder.svg?height=600&width=800",
+      tags: ["TypeScript", "Discord.js", "Node.js", "Canvas API"],
       links: {
-        github: "https://github.com/MohammedADev/Canvas-Discord-Bot",
-        live: "#",
+        demo: "https://example.com",
+        github: "https://github.com/MohammedADev/canvas-bot",
+      },
+    },
+    {
+      id: 2,
+      title: "Distributed Cache System",
+      description:
+        "A high-performance distributed caching system built with Redis and Go, capable of handling millions of requests per second.",
+      image: "/placeholder.svg?height=600&width=800",
+      tags: ["Go", "Redis", "Docker", "Kubernetes"],
+      links: {
+        github: "https://github.com/MohammedADev/distributed-cache",
+      },
+    },
+    {
+      id: 3,
+      title: "Real-time Analytics Dashboard",
+      description:
+        "A real-time analytics dashboard for monitoring user activity and system performance. Built with Next.js and Socket.io.",
+      image: "/placeholder.svg?height=600&width=800",
+      tags: ["React", "Next.js", "Socket.io", "Chart.js"],
+      links: {
+        demo: "https://example.com",
+        github: "https://github.com/MohammedADev/analytics-dashboard",
+      },
+    },
+    {
+      id: 4,
+      title: "E-commerce Platform",
+      description:
+        "A full-featured e-commerce platform with product management, cart functionality, and payment processing.",
+      image: "/placeholder.svg?height=600&width=800",
+      tags: ["React", "Node.js", "MongoDB", "Stripe"],
+      links: {
+        demo: "https://example.com",
+        github: "https://github.com/MohammedADev/ecommerce-platform",
       },
     },
   ];
 
   return (
     <PageLayout currentSection="projects">
-      <div className="min-h-screen p-8 md:p-16">
-        <div className="animate-slide-up mx-auto max-w-6xl space-y-12">
-          <h1 className="from-primary to-secondary bg-gradient-to-r bg-clip-text text-4xl font-bold text-transparent">
-            Projects
-          </h1>
+      <div className="min-h-screen p-8 pt-16 md:p-16 md:pt-24">
+        <div className="animate-fade-in mx-auto max-w-6xl space-y-12">
+          <div>
+            <h1 className="from-primary to-secondary bg-gradient-to-r bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
+              Projects
+            </h1>
+            <div className="from-primary to-secondary mt-2 h-1 w-20 bg-gradient-to-r"></div>
+            <p className="text-muted-foreground mt-4 max-w-2xl text-lg">
+              A collection of my recent work in full-stack development,
+              distributed systems, and web applications. Each project showcases
+              different skills and technologies.
+            </p>
+          </div>
 
           <div className="grid gap-8 md:grid-cols-2">
-            {projects.map((project, index) => (
+            {projects.map((project) => (
               <div
-                key={project.title}
-                className="group animate-scale-in relative"
-                style={{ animationDelay: `${index * 100}ms` }}
+                key={project.id}
+                className="border-border bg-card/5 group hover:border-primary/50 relative overflow-hidden rounded-xl border transition-all hover:shadow-lg"
               >
-                <div className="border-border bg-card/5 relative aspect-video overflow-hidden rounded-lg border">
+                <div className="from-primary/5 to-secondary/5 absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity group-hover:opacity-100"></div>
+
+                <div className="relative aspect-video overflow-hidden">
                   <Image
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="from-background/80 via-background/30 absolute inset-0 bg-gradient-to-t to-transparent opacity-0 backdrop-blur-xs transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="from-background/80 absolute inset-0 bg-gradient-to-t to-transparent"></div>
+                </div>
 
-                  <div className="absolute inset-0 flex flex-col justify-between p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                    <div>
-                      <h2 className="text-foreground mb-2 text-2xl font-bold">
-                        {project.title}
-                      </h2>
-                      <p className="text-muted-foreground">
-                        {project.description}
-                      </p>
-                    </div>
+                <div className="relative p-6">
+                  <h2 className="text-foreground text-2xl font-bold">
+                    {project.title}
+                  </h2>
+                  <p className="text-muted-foreground mt-2">
+                    {project.description}
+                  </p>
 
-                    <div className="space-y-4">
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="bg-primary/10 text-primary rounded-full px-3 py-1 text-sm backdrop-blur-xs"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="bg-primary/10 text-primary rounded-full px-3 py-1 text-xs font-medium"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
 
-                      <div className="flex gap-4">
-                        <Link
-                          href={
-                            project.links.github
-                              ? { pathname: project.links.github }
-                              : { pathname: "#" }
-                          }
-                          className="bg-secondary/10 text-secondary hover:bg-secondary/20 hover:shadow-secondary/25 rounded-full p-2 backdrop-blur-xs transition-all hover:shadow-lg"
-                        >
-                          <SiGithub className="h-5 w-5" />
-                        </Link>
-                        <Link
-                          href={
-                            project.links.live
-                              ? { pathname: project.links.live }
-                              : { pathname: "#" }
-                          }
-                          className="bg-primary/10 text-primary hover:bg-primary/20 hover:shadow-primary/25 rounded-full p-2 backdrop-blur-xs transition-all hover:shadow-lg"
-                        >
-                          <ExternalLink className="h-5 w-5" />
-                        </Link>
-                      </div>
-                    </div>
+                  <div className="mt-6 flex gap-4">
+                    {project.links.github && (
+                      <Link
+                        href={project.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button variant="outline" size="sm" className="gap-2">
+                          <Github className="h-4 w-4" />
+                          Code
+                        </Button>
+                      </Link>
+                    )}
+
+                    {project.links.demo && (
+                      <Link
+                        href={project.links.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button size="sm" className="gap-2">
+                          <ExternalLink className="h-4 w-4" />
+                          Live Demo
+                        </Button>
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>

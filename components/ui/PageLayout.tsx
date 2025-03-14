@@ -2,10 +2,12 @@
 import type React from "react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
-import Navigation from "@/components/ui/Navigation";
+import TabNavigation from "@/components/ui/TabNavigation";
 import ViewfinderOverlay from "@/components/ui/ViewfinderOverlay";
 import Footer from "@/components/ui/Footer";
+import Loading from "@/components/ui/Loading";
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -19,30 +21,46 @@ export default function PageLayout({
   showFooter = true,
 }: PageLayoutProps) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showLoading, setShowLoading] = useState(true);
 
   useEffect(() => {
-    requestAnimationFrame(() => {
-      setIsLoaded(true);
-    });
+    // Show loading screen for at least 1.5 seconds
+    const timer = setTimeout(() => {
+      setShowLoading(false);
+
+      // After loading screen is gone, show the content
+      setTimeout(() => {
+        setIsLoaded(true);
+      }, 300);
+    }, 1500);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div
-      className={cn(
-        "bg-background text-foreground relative min-h-screen overflow-hidden transition-opacity duration-300",
-        !isLoaded && "opacity-0",
-      )}
-    >
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--primary),0.1),transparent_50%)]" />
-      <Navigation currentSection={currentSection} />
-      <ViewfinderOverlay currentSection={currentSection} />
-      <main className="min-h-screen w-[calc(100%-4rem)]">{children}</main>
+    <>
+      <AnimatePresence>{showLoading && <Loading />}</AnimatePresence>
 
-      {showFooter && (
-        <div className="w-[calc(100%-4rem)]">
-          <Footer />
-        </div>
-      )}
-    </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isLoaded ? 1 : 0 }}
+        transition={{ duration: 0.5 }}
+        className={cn(
+          "bg-background text-foreground relative min-h-screen overflow-hidden",
+        )}
+      >
+        <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--primary-rgb),0.08),transparent_50%)]" />
+        <TabNavigation currentSection={currentSection} />
+        <ViewfinderOverlay currentSection={currentSection} />
+
+        <main className="min-h-screen w-full pt-16">{children}</main>
+
+        {showFooter && (
+          <div className="w-full">
+            <Footer />
+          </div>
+        )}
+      </motion.div>
+    </>
   );
 }

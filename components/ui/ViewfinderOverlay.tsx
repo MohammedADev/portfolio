@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 let startTime: number | null = null;
 
@@ -14,11 +15,17 @@ export default function ViewfinderOverlay({
 }: ViewfinderOverlayProps) {
   const [elapsedTime, setElapsedTime] = useState(0);
   const [isRecording] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     if (startTime === null) {
       startTime = Date.now();
     }
+
+    // Fade in the overlay after a short delay
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 500);
 
     if (isRecording) {
       const interval = setInterval(() => {
@@ -26,8 +33,13 @@ export default function ViewfinderOverlay({
         setElapsedTime(currentElapsed);
       }, 1000);
 
-      return () => clearInterval(interval);
+      return () => {
+        clearInterval(interval);
+        clearTimeout(timer);
+      };
     }
+
+    return () => clearTimeout(timer);
   }, [isRecording]);
 
   const formatTime = (seconds: number) => {
@@ -74,13 +86,15 @@ export default function ViewfinderOverlay({
   };
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isVisible ? 1 : 0 }}
+      transition={{ duration: 0.5 }}
       className={cn(
         "pointer-events-none fixed inset-0 font-mono text-xs md:text-sm",
-        "transition-opacity duration-500",
       )}
     >
-      <div className="absolute top-8 left-8 space-y-1">
+      <div className="absolute top-8 left-8 z-10 space-y-1">
         <div
           className={cn(
             "text-primary flex items-center",
@@ -93,18 +107,23 @@ export default function ViewfinderOverlay({
         <div className="text-primary">ISO AUTO</div>
       </div>
 
-      <div className="absolute top-8 right-24 space-y-1 text-right">
+      <div className="absolute top-8 right-24 z-10 space-y-1 text-right">
         <div className="text-secondary">{getAperture()}</div>
         <div className="text-secondary">{getShutterSpeed()}</div>
       </div>
 
-      <div className="absolute bottom-8 left-8">
-        <div className="text-primary">{currentSection?.toUpperCase()}</div>
+      <div className="absolute bottom-8 left-8 z-10">
+        <div className="text-primary font-medium tracking-wider">
+          {currentSection?.toUpperCase()}
+        </div>
       </div>
 
-      <div className="absolute right-24 bottom-8">
+      <div className="absolute right-24 bottom-8 z-10">
         <div className="text-secondary">AF</div>
       </div>
-    </div>
+
+      {/* Vignette effect */}
+      <div className="bg-gradient-radial to-background/30 pointer-events-none absolute inset-0 from-transparent"></div>
+    </motion.div>
   );
 }
