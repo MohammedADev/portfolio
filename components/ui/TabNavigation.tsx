@@ -1,5 +1,7 @@
 "use client";
 
+import type React from "react";
+
 import { useState, useRef, useEffect, useMemo } from "react";
 import { Moon, Sun, Camera, User, Grid, ImageIcon, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -35,6 +37,7 @@ export default function TabNavigation({ currentSection }: TabNavigationProps) {
     [],
   );
 
+  // Find the active index based on currentSection
   useEffect(() => {
     const index = navItems.findIndex((item) => item.id === currentSection);
     if (index !== -1) {
@@ -53,7 +56,7 @@ export default function TabNavigation({ currentSection }: TabNavigationProps) {
         });
       }
     }
-  }, [hoveredIndex]);
+  }, [hoveredIndex, navItems]);
 
   useEffect(() => {
     const activeElement = tabRefs.current[activeIndex];
@@ -64,7 +67,7 @@ export default function TabNavigation({ currentSection }: TabNavigationProps) {
         width: `${offsetWidth}px`,
       });
     }
-  }, [activeIndex]);
+  }, [activeIndex, navItems]);
 
   useEffect(() => {
     requestAnimationFrame(() => {
@@ -86,12 +89,12 @@ export default function TabNavigation({ currentSection }: TabNavigationProps) {
   };
 
   return (
-    <div className="border-border bg-background/80 dark:bg-background/50 fixed top-0 right-0 left-0 z-40 border-b backdrop-blur-sm">
+    <div className="border-border bg-background/80 dark:bg-background/50 fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-sm">
       <div className="relative container mx-auto flex h-16 items-center justify-center px-4">
         <Button
           variant="ghost"
           size="icon"
-          className="absolute right-4"
+          className="hover:text-primary absolute right-4"
           onClick={toggleDarkMode}
         >
           {isDarkMode ? (
@@ -124,7 +127,7 @@ export default function TabNavigation({ currentSection }: TabNavigationProps) {
               return (
                 <Link href={item.href} key={item.id}>
                   <div
-                    ref={(el: HTMLDivElement | null) => {
+                    ref={(el) => {
                       tabRefs.current[index] = el;
                     }}
                     className={`h-[38px] cursor-pointer px-4 py-2 transition-colors duration-300 ${

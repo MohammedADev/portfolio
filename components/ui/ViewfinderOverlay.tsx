@@ -94,7 +94,7 @@ export default function ViewfinderOverlay({
         "pointer-events-none fixed inset-0 font-mono text-xs md:text-sm",
       )}
     >
-      <div className="absolute top-8 left-8 z-10 space-y-1">
+      <div className="absolute top-24 left-8 z-10 space-y-1">
         <div
           className={cn(
             "text-primary flex items-center",
@@ -107,7 +107,7 @@ export default function ViewfinderOverlay({
         <div className="text-primary">ISO AUTO</div>
       </div>
 
-      <div className="absolute top-8 right-24 z-10 space-y-1 text-right">
+      <div className="absolute top-24 right-24 z-10 space-y-1 text-right">
         <div className="text-secondary">{getAperture()}</div>
         <div className="text-secondary">{getShutterSpeed()}</div>
       </div>

@@ -28,7 +28,7 @@ export default function About() {
               <div className="border-border relative w-full overflow-hidden rounded-xl border shadow-lg">
                 <div className="from-primary/10 to-secondary/10 absolute inset-0 bg-gradient-to-br mix-blend-overlay"></div>
                 <Image
-                  src="/placeholder.svg?height=600&width=800"
+                  src="/images/profile.jpg"
                   alt="Profile"
                   width={600}
                   height={400}
@@ -36,10 +36,6 @@ export default function About() {
                   className="aspect-auto w-full object-cover"
                 />
               </div>
-
-              {/* Decorative elements */}
-              <div className="border-primary/20 bg-background absolute -right-4 -bottom-4 h-24 w-24 rounded-full border"></div>
-              <div className="border-secondary/20 bg-background absolute -top-4 -left-4 h-16 w-16 rounded-full border"></div>
             </div>
 
             <div className="space-y-4">

@@ -24,7 +24,6 @@ export default function PageLayout({
   const [showLoading, setShowLoading] = useState(true);
 
   useEffect(() => {
-    // Show loading screen for at least 1.5 seconds
     const timer = setTimeout(() => {
       setShowLoading(false);
 
@@ -32,7 +31,7 @@ export default function PageLayout({
       setTimeout(() => {
         setIsLoaded(true);
       }, 300);
-    }, 1500);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -49,7 +48,7 @@ export default function PageLayout({
           "bg-background text-foreground relative min-h-screen overflow-hidden",
         )}
       >
-        <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--primary-rgb),0.08),transparent_50%)]" />
+        <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--primary-rgb),0.08),transparent_50%)]" />
         <TabNavigation currentSection={currentSection} />
         <ViewfinderOverlay currentSection={currentSection} />
 
