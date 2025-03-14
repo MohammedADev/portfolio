@@ -46,7 +46,7 @@ export default function Projects() {
     <Layout currentSection="projects">
       <div className="min-h-screen p-8 md:p-16">
         <div className="animate-slide-up mx-auto max-w-6xl space-y-12">
-          <h1 className="from-primary to-secondary bg-linear-to-r bg-clip-text text-4xl font-bold text-transparent">
+          <h1 className="from-primary to-secondary bg-gradient-to-r bg-clip-text text-4xl font-bold text-transparent">
             Projects
           </h1>
 
@@ -64,7 +64,7 @@ export default function Projects() {
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="from-background/80 via-background/30 absolute inset-0 bg-linear-to-t to-transparent opacity-0 backdrop-blur-xs transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="from-background/80 via-background/30 absolute inset-0 bg-gradient-to-t to-transparent opacity-0 backdrop-blur-xs transition-opacity duration-500 group-hover:opacity-100" />
 
                   <div className="absolute inset-0 flex flex-col justify-between p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                     <div>
