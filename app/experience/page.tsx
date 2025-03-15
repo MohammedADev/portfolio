@@ -1,8 +1,21 @@
-import PageLayout from "@/components/ui/PageLayout";
+"use client";
+
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import PageLayout from "@/components/ui/PageLayout";
+import { Badge } from "@/components/ui/badge";
+import {
+  Calendar,
+  ExternalLink,
+  Github,
+  Briefcase,
+  Code,
+  Layers,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 interface Project {
   id: number;
@@ -16,7 +29,19 @@ interface Project {
   };
 }
 
-export default function Projects() {
+interface Experience {
+  id: number;
+  company: string;
+  position: string;
+  period: string;
+  description: string;
+  skills: string[];
+  logo?: string;
+}
+
+export default function Experience() {
+  const [activeTab, setActiveTab] = useState("projects");
+
   const projects: Project[] = [
     {
       id: 1,
@@ -31,126 +56,237 @@ export default function Projects() {
     },
     {
       id: 2,
-      title: "Dressin Automation Bot",
+      title: "Dressin Automation",
       description:
         "This script is designed to automate the process of placing an order on Dressin.com. It simulates user interactions to navigate through the website, select products, fill out forms, and complete the checkout process.",
-      image: "/images/projects/dressin.png",
+      image: "/images/projects/dressin-logo.png",
       tags: ["Typescript", "Node.js", "Dressin", "Playwright", "Google API"],
       links: {
         github: "https://github.com/MohammedADev/Dressin-Bot",
       },
     },
+  ];
+
+  const experiences: Experience[] = [
     {
-      id: 3,
-      title: "Real-time Analytics Dashboard",
+      id: 1,
+      company: "PearAI",
+      position: "Fullstack Software Engineer",
+      period: "2024 - Present",
       description:
-        "A real-time analytics dashboard for monitoring user activity and system performance. Built with Next.js and Socket.io.",
-      image: "/placeholder.svg?height=600&width=800",
-      tags: ["React", "Next.js", "Socket.io", "Chart.js"],
-      links: {
-        demo: "https://example.com",
-        github: "https://github.com/MohammedADev/analytics-dashboard",
-      },
-    },
-    {
-      id: 4,
-      title: "E-commerce Platform",
-      description:
-        "A full-featured e-commerce platform with product management, cart functionality, and payment processing.",
-      image: "/placeholder.svg?height=600&width=800",
-      tags: ["React", "Node.js", "MongoDB", "Stripe"],
-      links: {
-        demo: "https://example.com",
-        github: "https://github.com/MohammedADev/ecommerce-platform",
-      },
+        "Developed critical frontend features for Y Combinator application, working directly with founders in agile sprints to align technical execution with product vision. Led landing page and Stripe payment integration, enabling $1,200 in pre-YC revenue; improved development velocity by 20% via code review optimizations. Maintained 90% pull request approval rate across 3+ repositories, enforcing coding standards.",
+      skills: ["TypeScript", "React.js", "Python", "Tailwind CSS"],
+      logo: "/images/experience/trypearai-logo.jpeg",
     },
   ];
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    show: { y: 0, opacity: 1 },
+  };
+
   return (
     <PageLayout currentSection="experience">
-      <div className="min-h-screen p-4 pt-12 sm:p-6 sm:pt-16 md:p-16 md:pt-24">
-        <div className="animate-fade-in mx-auto max-w-6xl space-y-8 sm:space-y-12">
-          <div>
-            <h1 className="from-primary to-secondary bg-gradient-to-r bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl">
-              Projects
-            </h1>
-            <div className="from-primary to-secondary mt-2 h-1 w-20 bg-gradient-to-r"></div>
-            <p className="text-muted-foreground mt-4 max-w-2xl text-base sm:text-lg">
-              A collection of my recent work in full-stack development,
-              distributed systems, and web applications. Each project showcases
-              different skills and technologies.
-            </p>
-          </div>
+      <div className="container mx-auto px-4 py-8 md:py-12 lg:py-16">
+        <header className="mb-10 text-center md:mb-14">
+          <h1 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+            <span className="from-primary to-primary/70 bg-gradient-to-r bg-clip-text text-transparent">
+              My Work
+            </span>
+          </h1>
+          <div className="from-primary to-primary/70 mx-auto mt-2 h-1 w-20 bg-gradient-to-r"></div>
+          <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-base md:text-lg">
+            Explore my professional journey through projects and work experience
+          </p>
+        </header>
 
-          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8">
-            {projects.map((project) => (
-              <div
-                key={project.id}
-                className="border-border bg-card/5 group hover:border-primary/50 relative flex h-full flex-col overflow-hidden rounded-lg border transition-all hover:shadow-lg sm:rounded-xl"
+        <Tabs
+          defaultValue="projects"
+          value={activeTab}
+          onValueChange={setActiveTab}
+          className="w-full"
+        >
+          <div className="mb-8 flex justify-center">
+            <TabsList className="grid w-full max-w-md grid-cols-2">
+              <TabsTrigger value="projects" className="flex items-center gap-2">
+                <Code className="h-4 w-4" />
+                Projects
+              </TabsTrigger>
+              <TabsTrigger
+                value="experience"
+                className="flex items-center gap-2"
               >
-                <div className="from-primary/5 to-secondary/5 absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity group-hover:opacity-100"></div>
-
-                <div className="relative h-36 w-full overflow-hidden sm:h-48">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="from-background/80 absolute inset-0 bg-gradient-to-t to-transparent"></div>
-                </div>
-
-                <div className="relative flex flex-1 flex-col p-4 sm:p-6">
-                  <h2 className="text-foreground text-xl font-bold sm:text-2xl">
-                    {project.title}
-                  </h2>
-                  <p className="text-muted-foreground mt-2 flex-1">
-                    {project.description}
-                  </p>
-
-                  <div className="mt-4 flex flex-wrap gap-1.5 sm:gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="bg-primary/10 text-primary rounded-full px-2 py-0.5 text-xs font-medium sm:px-3 sm:py-1"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="mt-4 flex gap-2 sm:mt-6 sm:gap-4">
-                    {project.links.github && (
-                      <Link
-                        href={project.links.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Button variant="outline" size="sm" className="gap-2">
-                          <Github className="h-4 w-4" />
-                          Code
-                        </Button>
-                      </Link>
-                    )}
-
-                    {project.links.demo && (
-                      <Link
-                        href={project.links.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Button size="sm" className="gap-2">
-                          <ExternalLink className="h-4 w-4" />
-                          Live Demo
-                        </Button>
-                      </Link>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
+                <Briefcase className="h-4 w-4" />
+                Experience
+              </TabsTrigger>
+            </TabsList>
           </div>
-        </div>
+
+          <TabsContent value="projects" className="mt-0">
+            <motion.div
+              className="space-y-8"
+              variants={container}
+              initial="hidden"
+              animate="show"
+            >
+              {projects.map((project) => (
+                <motion.div
+                  key={project.id}
+                  variants={item}
+                  className="group bg-card/30 hover:bg-card/50 relative overflow-hidden rounded-xl backdrop-blur-sm transition-all"
+                >
+                  <div className="from-primary/20 via-primary/10 to-secondary/20 absolute -inset-1 rounded-xl bg-gradient-to-r opacity-0 blur transition-all duration-500 group-hover:opacity-100"></div>
+
+                  <div className="relative p-6">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+                      <div className="bg-background/50 relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg p-1">
+                        <Image
+                          src={project.image || "/placeholder.svg"}
+                          alt={project.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+
+                      <div className="flex-1">
+                        <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
+                          <h3 className="text-xl font-bold">{project.title}</h3>
+                          <div className="text-muted-foreground flex items-center text-sm">
+                            <Layers className="mr-1 h-4 w-4" />
+                            Project
+                          </div>
+                        </div>
+
+                        <p className="text-muted-foreground mt-3">
+                          {project.description}
+                        </p>
+
+                        <div className="mt-4 flex flex-wrap gap-1.5">
+                          {project.tags.map((tag) => (
+                            <Badge
+                              key={tag}
+                              variant="outline"
+                              className="bg-primary/5"
+                            >
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+
+                        <div className="mt-4 flex flex-wrap gap-3">
+                          {project.links.github && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              asChild
+                              className="gap-1.5 transition-colors"
+                            >
+                              <Link
+                                href={project.links.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <Github className="h-4 w-4" />
+                                Code
+                              </Link>
+                            </Button>
+                          )}
+
+                          {project.links.demo && (
+                            <Button size="sm" asChild className="gap-1.5">
+                              <Link
+                                href={project.links.demo}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <ExternalLink className="h-4 w-4" />
+                                Live Demo
+                              </Link>
+                            </Button>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </TabsContent>
+
+          <TabsContent value="experience" className="mt-0">
+            <motion.div
+              className="space-y-8"
+              variants={container}
+              initial="hidden"
+              animate="show"
+            >
+              {experiences.map((exp) => (
+                <motion.div
+                  key={exp.id}
+                  variants={item}
+                  className="group bg-card/30 hover:bg-card/50 relative overflow-hidden rounded-xl backdrop-blur-sm transition-all"
+                >
+                  <div className="from-primary/20 via-primary/10 to-secondary/20 absolute -inset-1 rounded-xl bg-gradient-to-r opacity-0 blur transition-all duration-500 group-hover:opacity-100"></div>
+
+                  <div className="relative p-6">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+                      {exp.logo && (
+                        <div className="bg-background/50 relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg p-2">
+                          <Image
+                            src={exp.logo || "/placeholder.svg"}
+                            alt={exp.company}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      )}
+
+                      <div className="flex-1">
+                        <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
+                          <h3 className="text-xl font-bold">{exp.position}</h3>
+                          <div className="text-muted-foreground flex items-center text-sm">
+                            <Calendar className="mr-1 h-4 w-4" />
+                            {exp.period}
+                          </div>
+                        </div>
+
+                        <h4 className="text-primary text-lg font-medium">
+                          {exp.company}
+                        </h4>
+
+                        <p className="text-muted-foreground mt-3">
+                          {exp.description}
+                        </p>
+
+                        <div className="mt-4 flex flex-wrap gap-1.5">
+                          {exp.skills.map((skill) => (
+                            <Badge
+                              key={skill}
+                              variant="secondary"
+                              className="bg-secondary/10"
+                            >
+                              {skill}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </TabsContent>
+        </Tabs>
       </div>
     </PageLayout>
   );
