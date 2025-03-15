@@ -68,29 +68,29 @@ export default function Projects() {
 
   return (
     <PageLayout currentSection="experience">
-      <div className="min-h-screen p-8 pt-16 md:p-16 md:pt-24">
-        <div className="animate-fade-in mx-auto max-w-6xl space-y-12">
+      <div className="min-h-screen p-4 pt-12 sm:p-6 sm:pt-16 md:p-16 md:pt-24">
+        <div className="animate-fade-in mx-auto max-w-6xl space-y-8 sm:space-y-12">
           <div>
-            <h1 className="from-primary to-secondary bg-gradient-to-r bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
+            <h1 className="from-primary to-secondary bg-gradient-to-r bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl">
               Projects
             </h1>
             <div className="from-primary to-secondary mt-2 h-1 w-20 bg-gradient-to-r"></div>
-            <p className="text-muted-foreground mt-4 max-w-2xl text-lg">
+            <p className="text-muted-foreground mt-4 max-w-2xl text-base sm:text-lg">
               A collection of my recent work in full-stack development,
               distributed systems, and web applications. Each project showcases
               different skills and technologies.
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8">
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="border-border bg-card/5 group hover:border-primary/50 relative flex h-full flex-col overflow-hidden rounded-xl border transition-all hover:shadow-lg"
+                className="border-border bg-card/5 group hover:border-primary/50 relative flex h-full flex-col overflow-hidden rounded-lg border transition-all hover:shadow-lg sm:rounded-xl"
               >
                 <div className="from-primary/5 to-secondary/5 absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity group-hover:opacity-100"></div>
 
-                <div className="relative h-48 w-full overflow-hidden">
+                <div className="relative h-36 w-full overflow-hidden sm:h-48">
                   <Image
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
@@ -100,26 +100,26 @@ export default function Projects() {
                   <div className="from-background/80 absolute inset-0 bg-gradient-to-t to-transparent"></div>
                 </div>
 
-                <div className="relative flex flex-1 flex-col p-6">
-                  <h2 className="text-foreground text-2xl font-bold">
+                <div className="relative flex flex-1 flex-col p-4 sm:p-6">
+                  <h2 className="text-foreground text-xl font-bold sm:text-2xl">
                     {project.title}
                   </h2>
                   <p className="text-muted-foreground mt-2 flex-1">
                     {project.description}
                   </p>
 
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="mt-4 flex flex-wrap gap-1.5 sm:gap-2">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="bg-primary/10 text-primary rounded-full px-3 py-1 text-xs font-medium"
+                        className="bg-primary/10 text-primary rounded-full px-2 py-0.5 text-xs font-medium sm:px-3 sm:py-1"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <div className="mt-6 flex gap-4">
+                  <div className="mt-4 flex gap-2 sm:mt-6 sm:gap-4">
                     {project.links.github && (
                       <Link
                         href={project.links.github}

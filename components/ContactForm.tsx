@@ -22,14 +22,16 @@ export default function ContactForm({
   return (
     <motion.form
       onSubmit={onSubmit}
-      className="border-border bg-card/5 relative overflow-hidden rounded-xl border p-8 backdrop-blur-sm"
+      className="border-border bg-card/5 relative overflow-hidden rounded-lg p-3 sm:rounded-xl sm:p-4 md:p-6 lg:p-8"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
     >
       <div className="from-primary/5 to-secondary/5 absolute inset-0 bg-gradient-to-br opacity-50"></div>
-      <div className="relative z-10 space-y-6">
-        <div className="space-y-2">
-          <label className="text-foreground text-sm font-medium">Name</label>
+      <div className="relative z-10 space-y-4 sm:space-y-6">
+        <div className="space-y-1 sm:space-y-2">
+          <label className="text-foreground text-xs font-medium sm:text-sm">
+            Name
+          </label>
           <Input
             {...register("name")}
             type="text"
@@ -37,12 +39,16 @@ export default function ContactForm({
             className="border-border bg-background/50 focus:border-primary/50"
           />
           {errors.name && (
-            <p className="text-sm text-red-500">{errors.name.message}</p>
+            <p className="text-xs text-red-500 sm:text-sm">
+              {errors.name.message}
+            </p>
           )}
         </div>
 
-        <div className="space-y-2">
-          <label className="text-foreground text-sm font-medium">Email</label>
+        <div className="space-y-1 sm:space-y-2">
+          <label className="text-foreground text-xs font-medium sm:text-sm">
+            Email
+          </label>
           <Input
             {...register("email")}
             type="email"
@@ -50,25 +56,31 @@ export default function ContactForm({
             className="border-border bg-background/50 focus:border-primary/50"
           />
           {errors.email && (
-            <p className="text-sm text-red-500">{errors.email.message}</p>
+            <p className="text-xs text-red-500 sm:text-sm">
+              {errors.email.message}
+            </p>
           )}
         </div>
 
-        <div className="space-y-2">
-          <label className="text-foreground text-sm font-medium">Message</label>
+        <div className="space-y-1 sm:space-y-2">
+          <label className="text-foreground text-xs font-medium sm:text-sm">
+            Message
+          </label>
           <Textarea
             {...register("message")}
             placeholder="Enter 10-1000 characters"
             className="border-border bg-background/50 focus:border-primary/50 min-h-[150px]"
           />
           {errors.message && (
-            <p className="text-sm text-red-500">{errors.message.message}</p>
+            <p className="text-xs text-red-500 sm:text-sm">
+              {errors.message.message}
+            </p>
           )}
         </div>
 
         <Button
           type="submit"
-          className="group relative w-full overflow-hidden"
+          className="group relative w-full overflow-hidden text-sm sm:text-base"
           disabled={isSubmitting}
         >
           <span className="relative z-10 flex items-center">

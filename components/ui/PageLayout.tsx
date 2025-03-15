@@ -52,7 +52,7 @@ export default function PageLayout({
         <TabNavigation currentSection={currentSection} />
         <ViewfinderOverlay currentSection={currentSection} />
 
-        <main className="min-h-screen w-full pt-16">{children}</main>
+        <main className="min-h-screen w-full pt-12 sm:pt-16">{children}</main>
 
         {showFooter && (
           <div className="w-full">

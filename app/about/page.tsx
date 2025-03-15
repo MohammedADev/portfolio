@@ -18,7 +18,7 @@ export default function About() {
         <div className="animate-fade-in mx-auto grid max-w-6xl items-start gap-16 md:grid-cols-2">
           <div className="space-y-8">
             <div>
-              <h1 className="from-primary to-secondary bg-gradient-to-r bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
+              <h1 className="from-primary to-secondary bg-gradient-to-r bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl">
                 About Me
               </h1>
               <div className="from-primary to-secondary mt-2 h-1 w-20 bg-gradient-to-r"></div>
@@ -43,7 +43,7 @@ export default function About() {
                 Experience
               </h2>
               <div className="space-y-4">
-                <div className="border-border bg-card/5 group hover:border-primary/50 relative overflow-hidden rounded-lg border p-6 backdrop-blur-sm transition-all">
+                <div className="border-border bg-card/5 group hover:border-primary/50 relative overflow-hidden rounded-lg border p-4 backdrop-blur-sm transition-all sm:p-6">
                   <div className="from-primary/5 to-secondary/5 absolute inset-0 bg-gradient-to-r opacity-0 transition-opacity group-hover:opacity-100"></div>
                   <h3 className="text-primary text-lg font-medium">
                     Fullstack Engineer
@@ -76,7 +76,7 @@ export default function About() {
                 {skills.map((skill) => (
                   <div
                     key={skill.name}
-                    className="border-border bg-card/5 group hover:border-primary/50 relative overflow-hidden rounded-lg border p-6 backdrop-blur-sm transition-all hover:shadow-lg"
+                    className="border-border bg-card/5 group hover:border-primary/50 relative overflow-hidden rounded-lg border p-4 backdrop-blur-sm transition-all hover:shadow-lg sm:p-6"
                   >
                     <div className="from-primary/5 to-secondary/5 absolute inset-0 bg-gradient-to-r opacity-0 transition-opacity group-hover:opacity-100"></div>
                     <skill.icon className={`h-8 w-8 ${skill.color} mb-4`} />
@@ -93,7 +93,7 @@ export default function About() {
                 Projects
               </h2>
               <div className="space-y-4">
-                <div className="border-border bg-card/5 group hover:border-primary/50 relative overflow-hidden rounded-lg border p-6 backdrop-blur-sm transition-all">
+                <div className="border-border bg-card/5 group hover:border-primary/50 relative overflow-hidden rounded-lg border p-4 backdrop-blur-sm transition-all sm:p-6">
                   <div className="from-primary/5 to-secondary/5 absolute inset-0 bg-gradient-to-r opacity-0 transition-opacity group-hover:opacity-100"></div>
                   <h3 className="text-secondary text-lg font-medium">
                     Canvas Discord Bot

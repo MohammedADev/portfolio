@@ -228,3 +228,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Add these z-index values to your existing styles if needed */
+.navigation {
+  z-index: 50;
+}
+
+.main-content {
+  z-index: 30;
+}

@@ -44,11 +44,11 @@ export default function Contact() {
 
   return (
     <PageLayout currentSection="contact">
-      <div className="min-h-screen p-8 pt-16 md:p-16 md:pt-24">
-        <div className="animate-fade-in mx-auto grid max-w-6xl gap-16 md:grid-cols-2">
-          <div className="space-y-8">
+      <div className="min-h-screen p-4 pt-12 sm:p-8 md:p-16 md:pt-24">
+        <div className="animate-fade-in mx-auto grid max-w-6xl gap-8 sm:gap-16 md:grid-cols-2">
+          <div className="space-y-4 sm:space-y-8">
             <div>
-              <h1 className="from-primary to-secondary bg-gradient-to-r bg-clip-text text-4xl font-bold text-transparent md:text-5xl">
+              <h1 className="from-primary to-secondary bg-gradient-to-r bg-clip-text text-3xl font-bold text-transparent sm:text-4xl md:text-5xl">
                 Contact
               </h1>
               <div className="from-primary to-secondary mt-2 h-1 w-20 bg-gradient-to-r"></div>

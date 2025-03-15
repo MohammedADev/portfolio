@@ -91,39 +91,62 @@ export default function ViewfinderOverlay({
       animate={{ opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.5 }}
       className={cn(
-        "pointer-events-none fixed inset-0 font-mono text-xs md:text-sm",
+        "pointer-events-none absolute inset-0 z-40 font-mono text-[10px] sm:text-xs md:text-sm",
+        "overflow-hidden",
       )}
     >
-      <div className="absolute top-24 left-8 z-10 space-y-1">
+      {/* Top Left Info */}
+      <div className="absolute top-16 left-3 z-10 space-y-1 sm:top-20 sm:left-6 md:top-24 md:left-8">
         <div
           className={cn(
             "text-primary flex items-center",
             isRecording && "animate-pulse",
           )}
         >
-          <div className="mr-2 h-2 w-2 rounded-full bg-red-500"></div>
+          <div className="mr-1.5 h-1.5 w-1.5 rounded-full bg-red-500 sm:mr-2 sm:h-2 sm:w-2"></div>
           REC {formatTime(elapsedTime)}
         </div>
-        <div className="text-primary">ISO AUTO</div>
+        <div className="text-primary hidden sm:block">ISO AUTO</div>
       </div>
 
-      <div className="absolute top-24 right-24 z-10 space-y-1 text-right">
+      {/* Top Right Info */}
+      <div className="absolute top-16 right-3 z-10 space-y-1 text-right sm:top-20 sm:right-16 md:top-24 md:right-24">
         <div className="text-secondary">{getAperture()}</div>
-        <div className="text-secondary">{getShutterSpeed()}</div>
+        <div className="text-secondary hidden sm:block">
+          {getShutterSpeed()}
+        </div>
       </div>
 
-      <div className="absolute bottom-8 left-8 z-10">
+      {/* Bottom Left Info */}
+      <div className="absolute bottom-4 left-3 z-10 sm:bottom-6 sm:left-6 md:bottom-8 md:left-8">
         <div className="text-primary font-medium tracking-wider">
           {currentSection?.toUpperCase()}
         </div>
       </div>
 
-      <div className="absolute right-24 bottom-8 z-10">
-        <div className="text-secondary">AF</div>
+      {/* Bottom Right Info */}
+      <div className="absolute right-3 bottom-4 z-10 sm:right-16 sm:bottom-6 md:right-24 md:bottom-8">
+        <div className="text-secondary hidden sm:block">AF</div>
       </div>
 
       {/* Vignette effect */}
-      <div className="bg-gradient-radial to-background/30 pointer-events-none absolute inset-0 from-transparent"></div>
+      <div
+        className="bg-gradient-radial to-background/30 pointer-events-none absolute inset-0 from-transparent"
+        style={{
+          maskImage:
+            "radial-gradient(circle at center, transparent 0%, black 100%)",
+          WebkitMaskImage:
+            "radial-gradient(circle at center, transparent 0%, black 100%)",
+        }}
+      ></div>
+
+      {/* Corner Markers - Optional visual enhancement */}
+      <div className="hidden sm:block">
+        <div className="border-primary/30 absolute top-12 left-12 h-8 w-8 border-t-2 border-l-2"></div>
+        <div className="border-primary/30 absolute top-12 right-12 h-8 w-8 border-t-2 border-r-2"></div>
+        <div className="border-primary/30 absolute bottom-12 left-12 h-8 w-8 border-b-2 border-l-2"></div>
+        <div className="border-primary/30 absolute right-12 bottom-12 h-8 w-8 border-r-2 border-b-2"></div>
+      </div>
     </motion.div>
   );
 }

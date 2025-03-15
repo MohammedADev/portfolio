@@ -33,15 +33,17 @@ export default function ContactInfoCard({
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
-      className="flex items-center gap-6"
+      className="flex flex-col items-center gap-3 sm:flex-row sm:gap-6"
     >
       <div
-        className={`${bgClassName} flex h-16 w-16 items-center justify-center rounded-full`}
+        className={`${bgClassName} flex h-12 w-12 items-center justify-center rounded-full sm:h-16 sm:w-16`}
       >
-        <Icon className={`${className} h-7 w-7`} />
+        <Icon className={`${className} h-5 w-5 sm:h-7 sm:w-7`} />
       </div>
-      <div>
-        <h3 className="text-foreground text-lg font-medium">{title}</h3>
+      <div className="text-center sm:text-left">
+        <h3 className="text-foreground text-base font-medium sm:text-lg">
+          {title}
+        </h3>
         {contentElement}
       </div>
     </motion.div>

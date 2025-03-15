@@ -67,40 +67,42 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-start md:items-end">
-          <div className="space-y-6 md:text-right">
-            <div className="space-y-4">
-              <div className="flex flex-wrap gap-6">
-                <Link
-                  href="/about"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  About
-                </Link>
-                <Link
-                  href="/experience"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Experience
-                </Link>
-                <Link
-                  href="/gallery"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Gallery
-                </Link>
-                <Link
-                  href="/contact"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Contact
-                </Link>
-              </div>
+        <div className="flex flex-col items-start justify-between space-y-6 p-4 sm:flex-row sm:space-y-0 sm:p-8 md:p-12">
+          <div className="flex flex-col space-y-4 sm:space-y-6">
+            <div className="flex flex-wrap gap-6">
+              <Link
+                href="/about"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                About
+              </Link>
+              <Link
+                href="/experience"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                Experience
+              </Link>
+              <Link
+                href="/gallery"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                Gallery
+              </Link>
+              <Link
+                href="/contact"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                Contact
+              </Link>
             </div>
+          </div>
 
-            <p className="text-muted-foreground text-sm">
-              © {currentYear} Mohammed Abdelaziz. All rights reserved.
-            </p>
+          <div className="flex w-full flex-col items-start sm:w-auto sm:items-end">
+            <div className="w-full space-y-4 sm:space-y-6 sm:text-right">
+              <p className="text-muted-foreground text-sm">
+                © {currentYear} Mohammed Abdelaziz. All rights reserved.
+              </p>
+            </div>
           </div>
         </div>
       </div>

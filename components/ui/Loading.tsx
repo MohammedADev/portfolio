@@ -40,10 +40,10 @@ export default function Loading() {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-background fixed inset-0 z-50 flex items-center justify-center"
+      className="bg-background fixed inset-0 z-50 flex items-center justify-center p-4"
     >
-      <div className="relative flex w-80 flex-col items-center space-y-8 text-center">
-        <div className="relative h-24 w-24">
+      <div className="relative flex w-full max-w-[320px] flex-col items-center space-y-6 text-center sm:space-y-8">
+        <div className="relative h-16 w-16 sm:h-24 sm:w-24">
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
@@ -61,12 +61,14 @@ export default function Loading() {
             }}
             className="absolute inset-0 m-auto flex items-center justify-center"
           >
-            <div className="bg-primary absolute inset-0 m-auto h-1 w-8"></div>
-            <div className="bg-primary absolute inset-0 m-auto h-8 w-1"></div>
+            <div className="bg-primary absolute inset-0 m-auto h-0.5 w-6 sm:h-1 sm:w-8"></div>
+            <div className="bg-primary absolute inset-0 m-auto h-6 w-0.5 sm:h-8 sm:w-1"></div>
           </motion.div>
         </div>
 
-        <div className="text-foreground font-mono tracking-wide">{message}</div>
+        <div className="text-foreground font-mono text-sm tracking-wide sm:text-base">
+          {message}
+        </div>
 
         <div className="w-full space-y-2">
           <div className="bg-muted/20 h-1 w-full overflow-hidden rounded-full">
@@ -76,16 +78,16 @@ export default function Loading() {
               className="bg-primary h-full rounded-full"
             ></motion.div>
           </div>
-          <div className="text-muted-foreground text-right font-mono text-xs">
+          <div className="text-muted-foreground text-right font-mono text-[10px] sm:text-xs">
             {progress}%
           </div>
         </div>
 
-        <div className="text-primary/50 mt-8 animate-pulse font-mono text-sm">
+        <div className="text-primary/50 mt-6 animate-pulse font-mono text-xs sm:mt-8 sm:text-sm">
           CAMERA SYSTEM LOADING
         </div>
 
-        <div className="animate-gradient-shift from-primary/10 to-secondary/10 pointer-events-none absolute -z-10 h-64 w-64 rounded-full bg-gradient-to-r blur-3xl"></div>
+        <div className="animate-gradient-shift from-primary/10 to-secondary/10 pointer-events-none absolute -z-10 h-48 w-48 rounded-full bg-gradient-to-r blur-3xl sm:h-64 sm:w-64"></div>
       </div>
     </motion.div>
   );

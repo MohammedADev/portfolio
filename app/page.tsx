@@ -6,13 +6,13 @@ import { Button } from "@/components/ui/button";
 export default function Home() {
   return (
     <PageLayout currentSection="home">
-      <div className="flex min-h-screen flex-col items-center justify-center p-8">
-        <div className="animate-fade-in max-w-3xl space-y-8 text-center">
-          <div className="space-y-4">
-            <h1 className="from-primary via-secondary to-primary bg-gradient-to-r bg-clip-text text-5xl font-bold text-transparent sm:text-6xl md:text-7xl">
+      <div className="flex min-h-screen flex-col items-center justify-center p-4 sm:p-8">
+        <div className="animate-fade-in max-w-3xl space-y-4 text-center sm:space-y-8">
+          <div className="space-y-2 sm:space-y-4">
+            <h1 className="from-primary via-secondary to-primary bg-gradient-to-r bg-clip-text text-4xl font-bold text-transparent sm:text-5xl md:text-6xl lg:text-7xl">
               Mohammed Abdelaziz
             </h1>
-            <p className="text-muted-foreground mx-auto max-w-xl text-xl md:text-2xl">
+            <p className="text-muted-foreground mx-auto max-w-xl text-lg sm:text-xl md:text-2xl">
               Full-stack developer with a passion for photography and
               distributed systems
             </p>
