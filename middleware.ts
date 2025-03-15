@@ -9,7 +9,7 @@ export function middleware() {
     style-src 'self' 'unsafe-inline';
     style-src-elem 'self' 'unsafe-inline';
     style-src-attr 'self' 'unsafe-inline';
-    img-src 'self' blob: data:;
+    img-src 'self' blob: data: https: http:;
     font-src 'self';
     object-src 'none';
     base-uri 'self';
@@ -17,7 +17,7 @@ export function middleware() {
     frame-ancestors 'none';
     block-all-mixed-content;
     upgrade-insecure-requests;
-    connect-src 'self';
+    connect-src 'self' https: http:;
   `;
 
   const response = NextResponse.next();
