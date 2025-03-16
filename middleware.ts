@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 
 export function middleware() {
-  const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
-
   const cspHeader = `
     default-src 'self';
     script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;

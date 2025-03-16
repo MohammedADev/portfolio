@@ -47,9 +47,9 @@ export default function Experience() {
       id: 1,
       title: "Canvas Discord Bot",
       description:
-        "A Discord bot that integrates with Canvas LMS to help students track assignments and deadlines. Built with Discord.js and Node.js.",
+        "Designed and implemented asynchronous Node.js application using Canvas LMS API to automate academic workflows. Created efficient database schema with Supabase that improved query performance and enabled real-time notifications.",
       image: "/images/projects/canvas-logo.png",
-      tags: ["TypeScript", "Discord.js", "Node.js", "Canvas API"],
+      tags: ["Discord.js", "Node.js", "Supabase", "TypeScript", "Canvas API"],
       links: {
         github: "https://github.com/MohammedADev/Canvas-Discord-Bot",
       },
@@ -60,7 +60,7 @@ export default function Experience() {
       description:
         "This script is designed to automate the process of placing an order on Dressin.com. It simulates user interactions to navigate through the website, select products, fill out forms, and complete the checkout process.",
       image: "/images/projects/dressin-logo.png",
-      tags: ["Typescript", "Node.js", "Dressin", "Playwright", "Google API"],
+      tags: ["TypeScript", "Node.js", "Playwright", "Google API"],
       links: {
         github: "https://github.com/MohammedADev/Dressin-Bot",
       },
@@ -72,10 +72,18 @@ export default function Experience() {
       id: 1,
       company: "PearAI",
       position: "Fullstack Software Engineer",
-      period: "2024 - Present",
+      period: "June 2024 - Present",
       description:
-        "Developed critical frontend features for Y Combinator application, working directly with founders in agile sprints to align technical execution with product vision. Led landing page and Stripe payment integration, enabling $1,200 in pre-YC revenue; improved development velocity by 20% via code review optimizations. Maintained 90% pull request approval rate across 3+ repositories, enforcing coding standards.",
-      skills: ["TypeScript", "React.js", "Python", "Tailwind CSS"],
+        "Implemented frontend components using React and TypeScript for Y Combinator application, incorporating feedback from senior engineers (ex-Meta/Coinbase). Designed and integrated Stripe payment system, enabling $1,200 in pre-launch revenue. Optimized React component architecture resulting in 90% pull request approval rate and improved code quality. Implemented performance optimizations for Vercel deployment serving 200K+ visitors, reducing load time by 25% through code splitting and lazy loading.",
+      skills: [
+        "TypeScript",
+        "React.js",
+        "Next.js",
+        "Redis",
+        "FastAPI",
+        "Supabase",
+        "Stripe",
+      ],
       logo: "/images/experience/trypearai-logo.jpeg",
     },
   ];
