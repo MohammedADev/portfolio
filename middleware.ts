@@ -5,17 +5,17 @@ export function middleware() {
 
   const cspHeader = `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-eval';
-    script-src-elem 'self' 'nonce-${nonce}' https://www.mohammedabdelaziz.com;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;
+    script-src-elem 'self' 'unsafe-inline' https:;
     style-src 'self' 'unsafe-inline';
     style-src-elem 'self' 'unsafe-inline';
     style-src-attr 'self' 'unsafe-inline';
     img-src 'self' blob: data: https: http:;
-    font-src 'self';
+    font-src 'self' https:;
     object-src 'none';
     base-uri 'self';
     form-action 'self';
-    frame-ancestors 'none';
+    frame-ancestors 'self';
     block-all-mixed-content;
     upgrade-insecure-requests;
     connect-src 'self' https: http:;
