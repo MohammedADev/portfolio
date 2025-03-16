@@ -6,6 +6,7 @@ export function middleware() {
   const cspHeader = `
     default-src 'self';
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-eval';
+    script-src-elem 'self' 'nonce-${nonce}' https://www.mohammedabdelaziz.com;
     style-src 'self' 'unsafe-inline';
     style-src-elem 'self' 'unsafe-inline';
     style-src-attr 'self' 'unsafe-inline';
